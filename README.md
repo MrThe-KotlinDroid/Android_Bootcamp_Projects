@@ -8,7 +8,7 @@ Welcome to my **Android Bootcamp Projects** repository! This is where I’m docu
 
 The projects in this repository are organized into categories based on difficulty and complexity:
 
-1. **Beginner Projects**  
+1. **[Beginner Projects](https://github.com/SahilplaySoftware/Android_Bootcamp_Projects/tree/8756525a2dec0749d6926141903ef7d5bda65758/I.%20Beginner_Projects)**  
    - Focus on basic concepts and foundational skills, primarily working with UI and simple functionality.
 2. **Intermediate Projects** *(Coming Soon)*  
    - Will cover more complex topics such as networking, data storage, and more sophisticated app features.
