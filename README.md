@@ -19,7 +19,7 @@ The projects in this repository are organized into categories based on difficult
 
 ## 🌱 Current Progress
 
-### Beginner Projects
+### [Beginner Projects](https://github.com/SahilplaySoftware/Android_Bootcamp_Projects/tree/8756525a2dec0749d6926141903ef7d5bda65758/I.%20Beginner_Projects)
 1. **My Quote App**  
    - A basic app displaying motivational quotes, aimed at practicing UI layout and text views.
 
