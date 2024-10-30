@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,26 +10,50 @@
         android:orientation="vertical"
         android:padding="48dp">
 
-        <EditText
-            android:id="@+id/edit_text_contact_name"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Contact Name" />
+            android:hint="Contact Name">
 
-        <EditText
-            android:id="@+id/edit_text_contact_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Contact Number" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_contact_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:inputType="textCapWords"
+                tools:text="Example Name" />
 
-        <EditText
-            android:id="@+id/edit_text_my_display_name"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="My Display Name" />
+            android:hint="Contact Number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_contact_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:inputType="phone"
+                tools:text="+880 1568 151770" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="My Display Name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_my_display_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:inputType="textCapWords"
+                tools:text="Md. Abrar Hamim" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
             android:id="@+id/check_box_junior"
@@ -49,18 +74,26 @@
             android:layout_height="wrap_content"
             android:text="Immediate Start" />
 
-        <EditText
-            android:id="@+id/edit_text_start_date"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Available from date" />
+            android:hint="Available from date">
+
+            <EditText
+                android:id="@+id/edit_text_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                tools:text="dd/mm/yyyy" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/button_preview"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:text="Preview Message" />
 
     </LinearLayout>
