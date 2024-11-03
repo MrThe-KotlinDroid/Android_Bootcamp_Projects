@@ -42,5 +42,3 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, testString, Toast.LENGTH_LONG).show()
     }
 }
-
-//Random comment push
