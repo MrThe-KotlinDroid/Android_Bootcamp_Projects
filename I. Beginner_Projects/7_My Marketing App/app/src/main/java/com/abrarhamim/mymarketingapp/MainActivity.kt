@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onPreviewClicked() {
-        Log.d("This is my TAG", "Currently contactNameEditText is " + contactNumberEditText.toString())
         val testString = contactNameEditText!!.text.toString() + ", " + contactNumberEditText!!.text.toString()
         Toast.makeText(this, testString, Toast.LENGTH_LONG).show()
     }
