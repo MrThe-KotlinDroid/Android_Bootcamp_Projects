@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:hint="Available from date">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_start_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
