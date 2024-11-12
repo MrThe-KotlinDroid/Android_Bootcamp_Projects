@@ -37,5 +37,9 @@ class MainActivity : AppCompatActivity() {
         val jobDescription = spinner_job_title.selectedItem.toString()
         val immediateStart = check_box_immediate_start.isChecked
         val startDate = edit_text_start_date.text.toString()
+
+        //random comment push
+
+        Toast.makeText(this, "", Toast.LENGTH_LONG).show()
     }
 }
