@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         val startDate = edit_text_start_date.text.toString()
 
         //random comment push
+        //rd2
 
         Toast.makeText(this, "", Toast.LENGTH_LONG).show()
     }
