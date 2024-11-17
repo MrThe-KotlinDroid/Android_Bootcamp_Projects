@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         val immediateStart = check_box_immediate_start.isChecked
         val startDate = edit_text_start_date.text.toString()
 
+        //Random git push
+
         Toast.makeText(this, "", Toast.LENGTH_LONG).show()
     }
 }
