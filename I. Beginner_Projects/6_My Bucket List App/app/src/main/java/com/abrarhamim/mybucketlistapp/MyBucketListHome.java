@@ -38,6 +38,5 @@ public class MyBucketListHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // Random git push
     }
 }
