@@ -31,6 +31,7 @@ public class MyBucketListHome extends AppCompatActivity {
             }
         });
 
+        //random git push
         placesToGoCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
