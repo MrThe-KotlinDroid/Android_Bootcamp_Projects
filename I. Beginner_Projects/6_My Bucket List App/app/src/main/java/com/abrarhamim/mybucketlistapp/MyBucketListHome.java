@@ -16,7 +16,6 @@ public class MyBucketListHome extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupClickListeners();
-        
     }
 
     private void setupClickListeners() {
