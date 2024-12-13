@@ -18,6 +18,7 @@ public class MyBucketListHome extends AppCompatActivity {
         setupClickListeners();
     }
 
+
     private void setupClickListeners() {
         CardView thingsToDoCard = findViewById(R.id.card_view_things_to_do);
         CardView placesToGoCard = findViewById(R.id.card_view_places_to_go);
