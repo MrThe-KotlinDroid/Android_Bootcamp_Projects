@@ -32,7 +32,6 @@ public class MyBucketListHome extends AppCompatActivity {
             }
         });
 
-
         placesToGoCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
