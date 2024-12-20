@@ -28,6 +28,8 @@ public class ThingsToDoActivity extends AppCompatActivity {
                 new BucketListEntry("Saint Moritz", "Experience world-class skiing and luxury in the heart of the Swiss Alps.", R.drawable.saint_moritz, 5)
         };
 
+
+
         BucketListEntryAdapter adapter = new BucketListEntryAdapter(lists);
         list_thingsToDo.setAdapter(adapter);
     }
