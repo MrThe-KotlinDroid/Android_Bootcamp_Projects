@@ -22,6 +22,8 @@ private var jobTitleSpinner: Spinner? = null
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
         contactNameEditText = findViewById(R.id.edit_text_contact_name);
         contactNumberEditText = findViewById(R.id.edit_text_contact_number);
         myDisplayNameEditText = findViewById(R.id.edit_text_display_name);
@@ -30,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         immediateStartCheckBox = findViewById(R.id.check_box_immediate_start);
         jobTitleSpinner = findViewById(R.id.spinner_job_title);
 
-        setContentView(R.layout.activity_main)
         val previewButton: Button = findViewById(R.id.button_preview)
         previewButton.setOnClickListener {
             onPreviewClicked()
