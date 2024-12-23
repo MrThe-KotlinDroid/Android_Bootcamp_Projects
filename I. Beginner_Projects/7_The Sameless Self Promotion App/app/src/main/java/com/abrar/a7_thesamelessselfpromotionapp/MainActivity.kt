@@ -1,6 +1,7 @@
 package com.abrar.a7_thesamelessselfpromotionapp
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Spinner
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         contactNameEditText = findViewById(R.id.edit_text_contact_name);
-        contactNumberEditText = findViewById(R.id.edit_text_contact_number);
+//        contactNumberEditText = findViewById(R.id.edit_text_contact_number);
         myDisplayNameEditText = findViewById(R.id.edit_text_display_name);
         startDateEditText = findViewById(R.id.edit_text_start_date);
         juniorCheckBox = findViewById(R.id.check_box_include_junior);
@@ -38,8 +39,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun onPreviewClicked() {
-        val testString = contactNameEditText?.text.toString() + ", " + contactNumberEditText?.text.toString()
+        val testString = contactNameEditText!!.text.toString() + ", " + contactNumberEditText!!.text.toString()
         Toast.makeText(this, testString, Toast.LENGTH_LONG).show()
     }
 }
