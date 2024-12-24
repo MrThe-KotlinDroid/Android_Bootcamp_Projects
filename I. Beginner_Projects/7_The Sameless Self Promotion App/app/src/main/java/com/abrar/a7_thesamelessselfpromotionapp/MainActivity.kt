@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun onPreviewClicked() {
         val testString = contactNameEditText!!.text.toString() + ", " + contactNumberEditText!!.text.toString()
         Toast.makeText(this, testString, Toast.LENGTH_LONG).show()
