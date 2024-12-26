@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun onPreviewClicked() {
         val contactName = edit_text_contact_name.text.toString()
         val contactNumber = edit_text_contact_number.text.toString()
