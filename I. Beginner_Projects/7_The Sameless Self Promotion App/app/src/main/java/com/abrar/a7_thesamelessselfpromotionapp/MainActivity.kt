@@ -1,6 +1,7 @@
 package com.abrar.a7_thesamelessselfpromotionapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,5 +24,9 @@ class MainActivity : AppCompatActivity() {
         val jonDescription = spinner_job_title.selectedItem.toString()
         val immediateStart = check_box_immediate_start.isChecked
         val startDate = edit_text_start_date.text.toString()
+
+        val testString = "Contact Name: $contactName, Contact Number: $contactNumber, My Display Name: $myDisplayName, Include Junior: $includeJunior"
+
+        Toast.makeText(this, "", Toast.LENGTH_LONG).show()
     }
 }
