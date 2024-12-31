@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         val immediateStart = check_box_immediate_start.isChecked
         val startDate = edit_text_start_date.text.toString()
 
-
         val testString = "Contact Name: $contactName, Contact Number: $contactNumber, My Display Name: $myDisplayName, Include Junior: $includeJunior, Job title: $jobTitle, Immediate Start: $immediateStart, Start Date: $startDate"
 
         Toast.makeText(this, testString, Toast.LENGTH_LONG).show()
