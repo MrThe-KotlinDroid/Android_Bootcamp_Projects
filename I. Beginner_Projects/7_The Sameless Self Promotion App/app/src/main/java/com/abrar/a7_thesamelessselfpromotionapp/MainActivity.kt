@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         previewActivityIntent.putExtra("Immediate Start", immediateStart)
         previewActivityIntent.putExtra("Start Date", startDate)
 
-
         startActivity(previewActivityIntent)
     }
 }
