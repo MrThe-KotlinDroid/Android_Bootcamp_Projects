@@ -14,9 +14,9 @@ class PreviewActivity : AppCompatActivity() {
         val contactName = intent.getStringExtra("Contact Name")
         val contactNumber = intent.getStringExtra("Contact Number")
         val myDisplayName = intent.getStringExtra("My Display Name")
-        val includeJunior = intent.getStringExtra("Include Junior")
+        val includeJunior = intent.getBooleanExtra("Include Junior", false)
         val jobTitle = intent.getStringExtra("Job Title")
-        val immediateStart = intent.getStringExtra("Immediate Start")
+        val immediateStart = intent.getBooleanExtra("Immediate Start", false)
         val startDate = intent.getStringExtra("Start Date")
 
         val testString = "Contact Name: $contactName, Contact Number: $contactNumber, My Display Name: $myDisplayName, Include Junior: $includeJunior, Job Title: $jobTitle, Immediate Start: $immediateStart, Start Date: $startDate"

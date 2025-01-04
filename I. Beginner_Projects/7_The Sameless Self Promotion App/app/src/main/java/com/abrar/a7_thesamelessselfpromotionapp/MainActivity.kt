@@ -2,6 +2,7 @@ package com.abrar.a7_thesamelessselfpromotionapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -11,10 +12,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         button_preview.setOnClickListener {
             onPreviewClicked()
         }
+
+        val spinnerValues: Array<String> = arrayOf("Android Developer", "Android Engineer", "IOS Developer")
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinnerValues)
+        spinner_job_title.adapter = spinnerAdapter
     }
 
     private fun onPreviewClicked() {
@@ -37,6 +41,5 @@ class MainActivity : AppCompatActivity() {
 
 
         startActivity(previewActivityIntent)
-
     }
 }
