@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val spinnerValues: Array<String> = arrayOf("Android Developer", "Android Engineer", "IOS Developer")
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, spinnerValues)
         spinner_job_title.adapter = spinnerAdapter
+
     }
 
     private fun onPreviewClicked() {
@@ -40,6 +41,5 @@ class MainActivity : AppCompatActivity() {
         previewActivityIntent.putExtra("Start Date", startDate)
 
         startActivity(previewActivityIntent)
-
     }
 }
