@@ -22,22 +22,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onPreviewClicked() {
-        val contactName = edit_text_contact_name.text.toString()
-        val contactNumber = edit_text_contact_number.text.toString()
-        val myDisplayName = edit_text_display_name.text.toString()
-        val includeJunior = check_box_include_junior.isChecked
-        val jobTitle = spinner_job_title.selectedItem?.toString()
-        val immediateStart = check_box_immediate_start.isChecked
-        val startDate = edit_text_start_date.text.toString()
+
+        val message = Message(
+            edit_text_contact_name.text.toString(),
+            edit_text_contact_number.text.toString(),
+            edit_text_display_name.text.toString(),
+            check_box_include_junior.isChecked,
+            spinner_job_title.selectedItem?.toString(),
+            check_box_immediate_start.isChecked,
+            edit_text_start_date.text.toString()
+        )
 
         val previewActivityIntent = Intent(this, PreviewActivity::class.java)
-        previewActivityIntent.putExtra("Contact Name", contactName)
-        previewActivityIntent.putExtra("Contact Number", contactNumber)
-        previewActivityIntent.putExtra("My Display Name", myDisplayName)
-        previewActivityIntent.putExtra("Include Junior", includeJunior)
-        previewActivityIntent.putExtra("Job Title", jobTitle)
-        previewActivityIntent.putExtra("Immediate Start", immediateStart)
-        previewActivityIntent.putExtra("Start Date", startDate)
 
         startActivity(previewActivityIntent)
     }
