@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">7_TheSamelessSelfPromotionApp</string>
+
+    <string name="app_name">7_TheShamelessSelfPromotionApp</string>
+
+    <string name="hint_contact_name">Contact Name</string>
+    <string name="hint_contact_number">Contact Number</string>
+    <string name="hint_my_name">My Display Name</string>
+    <string name="check_box_text_include_junior">Include Junior</string>
+    <string name="check_box_text_immediate_start">Immediate Start</string>
+    <string name="hint_available_from">Additional Information</string>
+    <string name="button_text_preview">Preview Message</string>
+    <string name="button_text_send">Send Message</string>
+
 </resources>
