@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Auto-promotion sans vergogne</string>
+    <string name = "hint_contact_name">Nom du contact</string>
+    <string name = "hint_contact_number">Numéro de contact</string>
+    <string name = "hint_my_name">Mon nom d\'affichage</string>
+    <string name = "check_box_text_include_junior">Inclure Junior</string>
+    <string name = "check_box_text_immediate_start">Démarrage immédiat</string>
+    <string name = "hint_available_from">Informations supplémentaires</string>
+    <string name = "button_text_preview">Aperçu du message</string>
+    <string name = "button_text_send">Envoyer le message</string>
+
+</resources>
