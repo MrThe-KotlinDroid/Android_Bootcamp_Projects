@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_run"
+        android:icon="@drawable/ic_running_24"
+        android:title="@string/running" />
+
+    <item
+        android:id="@+id/bottom_nav_bike"
+        android:icon="@drawable/ic_bike_24"
+        android:title="@string/cycling" />
+
+</menu>
