@@ -2,6 +2,8 @@ package com.abrar.recordkeeper
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.abrar.recordkeeper.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +14,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNav
-        binding.frameContent
+
+
+        binding.buttonCycling.setOnClickListener { onCyclingClicked() }
+        binding.buttonRunning.setOnClickListener { onRunningClicked() }
+
+    }
+
+    private fun onRunningClicked() {
+        supportFragmentManager.commit {
+            replace(R.id.frame_content, RunningFragment())
+        }
+    }
+
+    private fun onCyclingClicked() {
+        supportFragmentManager.commit {
+            replace(R.id.frame_content, CyclingFragment())
+        }
     }
 }
