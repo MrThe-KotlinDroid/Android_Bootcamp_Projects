@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+
     private fun onCyclingClicked() {
         supportFragmentManager.commit {
             replace(R.id.frame_content, CyclingFragment())
