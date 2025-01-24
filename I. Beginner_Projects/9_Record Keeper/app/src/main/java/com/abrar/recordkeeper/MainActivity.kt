@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonCycling.setOnClickListener { onCyclingClicked() }
-        binding.buttonRunning.setOnClickListener { onRunningClicked() }
+        binding.buttonCycling.setOnClickListener { binding.bottomNav }
+        binding.buttonRunning.setOnClickListener { binding.bottomNav }
 
     }
 
@@ -34,5 +34,4 @@ class MainActivity : AppCompatActivity(){
             replace(R.id.frame_content, CyclingFragment())
         }
     }
-
 }
