@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(){
         binding.buttonCycling.setOnClickListener { onCyclingClicked() }
         binding.buttonRunning.setOnClickListener { onRunningClicked() }
 
+
     }
 
     private fun onRunningClicked() {
