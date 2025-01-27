@@ -42,10 +42,12 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 onRunningClicked()
                 return true
             }
+
             R.id.bottom_nav_bike -> {
                 onCyclingClicked()
                 return true
             }
+
             else -> {
                 return false
             }
