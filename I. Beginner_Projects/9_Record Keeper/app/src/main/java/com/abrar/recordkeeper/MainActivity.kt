@@ -1,14 +1,16 @@
 package com.abrar.recordkeeper
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.abrar.recordkeeper.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationBarView
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -18,8 +20,7 @@ class MainActivity : AppCompatActivity(){
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonCycling.setOnClickListener { binding.bottomNav }
-        binding.buttonRunning.setOnClickListener { binding.bottomNav }
+        binding.bottomNav.setOnItemSelectedListener(this)
 
     }
 
@@ -32,6 +33,22 @@ class MainActivity : AppCompatActivity(){
     private fun onCyclingClicked() {
         supportFragmentManager.commit {
             replace(R.id.frame_content, CyclingFragment())
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.bottom_nav_run -> {
+                onRunningClicked()
+                return true
+            }
+            R.id.bottom_nav_bike -> {
+                onCyclingClicked()
+                return true
+            }
+            else -> {
+                return false
+            }
         }
     }
 }
