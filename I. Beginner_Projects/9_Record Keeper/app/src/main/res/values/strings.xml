@@ -9,4 +9,8 @@
     <string name="Ten_km_heading">10km</string>
     <string name="half_marathon_heading">Half Marathon</string>
     <string name="marathon_heading">Marathon</string>
+    <string name="cycling_image_description">Cycling Image</string>
+    <string name="longest_ride_heading">Longest Ride</string>
+    <string name="biggest_climb_heading">Biggest Climb</string>
+    <string name="best_average_speed_heading">Best Average Speed</string>
 </resources>
