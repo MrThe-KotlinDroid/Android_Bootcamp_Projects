@@ -24,19 +24,18 @@ class RunningFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpClickListeners()
-
-
     }
 
     private fun setUpClickListeners() {
-        binding.container5km.setOnClickListener { launchRunningRecordScreen() }
-        binding.container10km.setOnClickListener { launchRunningRecordScreen() }
-        binding.containerHalfMarathon.setOnClickListener { launchRunningRecordScreen() }
-        binding.containerMarathon.setOnClickListener { launchRunningRecordScreen() }
+        binding.container5km.setOnClickListener { launchRunningRecordScreen("5 km") }
+        binding.container10km.setOnClickListener { launchRunningRecordScreen("10 km") }
+        binding.containerHalfMarathon.setOnClickListener { launchRunningRecordScreen("Half Marathon") }
+        binding.containerMarathon.setOnClickListener { launchRunningRecordScreen("Marathon") }
     }
 
-    private fun launchRunningRecordScreen() {
+    private fun launchRunningRecordScreen(distance: String) {
         val intent = Intent(context, EditRunningRecordActivity::class.java)
+        intent.putExtra("Distance", distance)
         startActivity(intent)
     }
 
