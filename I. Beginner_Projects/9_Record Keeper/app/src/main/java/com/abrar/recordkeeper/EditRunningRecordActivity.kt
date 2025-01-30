@@ -12,7 +12,7 @@ class EditRunningRecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditRunningRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        title = "My new toolbar title"
+        val distance = intent.getStringExtra("Distance")
+        title = "$distance Record"
     }
 }
