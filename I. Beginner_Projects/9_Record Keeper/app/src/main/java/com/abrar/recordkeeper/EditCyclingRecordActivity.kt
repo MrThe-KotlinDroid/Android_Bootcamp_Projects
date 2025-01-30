@@ -15,5 +15,4 @@ class EditCyclingRecordActivity : AppCompatActivity() {
         val record = intent.getStringExtra("Record")
         title = "$record Record"
     }
-
 }
