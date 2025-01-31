@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setContentView(binding.root)
 
         binding.bottomNav.setOnItemSelectedListener(this)
-
     }
 
     private fun onRunningClicked(): Boolean {
