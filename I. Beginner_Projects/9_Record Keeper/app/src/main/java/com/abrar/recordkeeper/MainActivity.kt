@@ -2,11 +2,8 @@ package com.abrar.recordkeeper
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import com.abrar.recordkeeper.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationBarView
 
@@ -36,19 +33,17 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.bottom_nav_run -> {
-                onRunningClicked()
-                true
-            }
-
-            R.id.bottom_nav_bike -> {
-                onCyclingClicked()
-                true
-            }
-
-            else -> false
+    override fun onNavigationItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.bottom_nav_run -> {
+            onRunningClicked()
+            true
         }
+
+        R.id.bottom_nav_bike -> {
+            onCyclingClicked()
+            true
+        }
+
+        else -> false
     }
 }
