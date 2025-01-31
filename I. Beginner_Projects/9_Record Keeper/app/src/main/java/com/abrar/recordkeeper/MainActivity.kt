@@ -37,20 +37,18 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.bottom_nav_run -> {
                 onRunningClicked()
-                return true
+                true
             }
 
             R.id.bottom_nav_bike -> {
                 onCyclingClicked()
-                return true
+                true
             }
 
-            else -> {
-                return false
-            }
+            else -> false
         }
     }
 }
