@@ -1,7 +1,9 @@
 package com.abrar.recordkeeper
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.abrar.recordkeeper.databinding.ActivityMainBinding
@@ -18,6 +20,27 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setContentView(binding.root)
 
         binding.bottomNav.setOnItemSelectedListener(this)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.reset_running -> {
+            Toast.makeText(this, "Clicked on Reset Running Menu item", Toast.LENGTH_SHORT).show()
+            true
+        }
+        R.id.reset_cycling -> {
+            Toast.makeText(this, "Clicked on Reset cycling Menu item", Toast.LENGTH_SHORT).show()
+            true
+        }
+        R.id.reset_all -> {
+            Toast.makeText(this, "Clicked on Reset All Menu item", Toast.LENGTH_SHORT).show()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
     }
 
     private fun onRunningClicked(): Boolean {
