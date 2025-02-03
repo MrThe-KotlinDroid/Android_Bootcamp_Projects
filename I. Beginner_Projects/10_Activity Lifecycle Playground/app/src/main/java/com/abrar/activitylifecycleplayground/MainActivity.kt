@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         Log.d("Abrar Hamim", "I'm in onCreate()!")
-
     }
 
     override fun onStart() {
