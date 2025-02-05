@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.d("Abrar Hamim", "I'm now in onStop()!")
-
     }
 
     override fun onDestroy() {
