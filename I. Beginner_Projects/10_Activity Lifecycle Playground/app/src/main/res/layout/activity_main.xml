@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_view_refresh_status"
-        tools:text= "Refresh Status"
+        android:id="@+id/text_view_timer"
+        tools:text= "You have been staring at the screen for 25 seconds !"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
