@@ -24,15 +24,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         binding.buttonExit.setOnClickListener {
             finish()
         }
+        binding.textViewRefreshStatus.text = "Welcome to the app! Here is your feed..."
     }
 
     override fun onResume() {
         super.onResume()
         if (isFirstLoad) {
-            binding.textViewRefreshStatus.text = "Welcome to the app! Here is your feed..."
             isFirstLoad = false
         } else {
             binding.textViewRefreshStatus.text = "Your Feed has been refreshed!"
