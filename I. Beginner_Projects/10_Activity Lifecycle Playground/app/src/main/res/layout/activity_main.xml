@@ -7,10 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text_view_timer"
-        tools:text= "You have been staring at the screen for 25 seconds !"
+    <EditText
+        android:id="@+id/edit_text_message"
+        android:hint="Please type the message you want to save here"
         android:layout_width="wrap_content"
+        android:minLines="3"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

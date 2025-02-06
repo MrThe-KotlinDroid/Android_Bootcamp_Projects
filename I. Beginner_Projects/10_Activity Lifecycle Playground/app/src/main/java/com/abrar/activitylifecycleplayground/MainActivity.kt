@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
+import java.io.File
 import java.util.Timer
 import kotlin.concurrent.fixedRateTimer
 
@@ -25,26 +26,13 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.buttonExit.setOnClickListener {
-            finish()
-        }
-
-
+        binding.buttonExit.setOnClickListener { finish() }
     }
 
-    override fun onResume() {
-        super.onResume()
-        timer = fixedRateTimer(period = 1000L) {
-            runOnUiThread {
-                seconds++
-                binding.textViewTimer.text = "You have been staring at this screen for $seconds seconds"
-            }
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        timer.cancel()
+    override fun onDestroy() {
+        super.onDestroy()
+        val userMessage = binding.editTextMessage.text
+        File(filesDir, "user message.txt").writeText(userMessage.toString())
     }
 
 
