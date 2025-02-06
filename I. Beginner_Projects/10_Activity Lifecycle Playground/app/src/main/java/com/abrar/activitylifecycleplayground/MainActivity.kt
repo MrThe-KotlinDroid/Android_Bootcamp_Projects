@@ -12,6 +12,7 @@ import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var isFirstLoad = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,4 +28,15 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        if (isFirstLoad) {
+            binding.textViewRefreshStatus.text = "Welcome to the app! Here is your feed..."
+            isFirstLoad = false
+        } else {
+            binding.textViewRefreshStatus.text = "Your Feed has been refreshed!"
+        }
+    }
+
 }
