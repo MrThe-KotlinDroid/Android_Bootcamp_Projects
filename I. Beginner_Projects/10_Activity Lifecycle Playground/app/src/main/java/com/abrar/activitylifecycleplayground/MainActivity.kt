@@ -30,8 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        binding.textViewRefreshStatus.text = "Welcome to your feed!"
         numberOfLoads++
+        binding.textViewRefreshStatus.text = "Welcome to your feed! We have loaded $numberOfLoads times."
     }
-
 }
