@@ -10,6 +10,7 @@ import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var numberOfLoads = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +26,12 @@ class MainActivity : AppCompatActivity() {
         binding.buttonExit.setOnClickListener {
             finish()
         }
-        binding.textViewRefreshStatus.text = "Welcome to the app! Here is your feed..."
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.textViewRefreshStatus.text = "Welcome to your feed!"
+        numberOfLoads++
+    }
 
 }
