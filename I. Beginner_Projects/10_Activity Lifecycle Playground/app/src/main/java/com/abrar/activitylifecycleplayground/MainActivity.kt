@@ -1,8 +1,6 @@
 package com.abrar.activitylifecycleplayground
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,7 +10,6 @@ import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var isFirstLoad = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +28,5 @@ class MainActivity : AppCompatActivity() {
         binding.textViewRefreshStatus.text = "Welcome to the app! Here is your feed..."
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (isFirstLoad) {
-            isFirstLoad = false
-        } else {
-            binding.textViewRefreshStatus.text = "Your Feed has been refreshed!"
-        }
-    }
 
 }
