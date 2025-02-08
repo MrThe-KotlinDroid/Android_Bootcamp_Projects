@@ -35,5 +35,4 @@ class MainActivity : AppCompatActivity() {
         File(filesDir, "user message.txt").writeText(userMessage.toString())
     }
 
-
 }
