@@ -8,7 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
 import java.io.File
 import java.util.Timer
-import kotlin.concurrent.fixedRateTimer
 
 class MainActivity : AppCompatActivity() {
 
