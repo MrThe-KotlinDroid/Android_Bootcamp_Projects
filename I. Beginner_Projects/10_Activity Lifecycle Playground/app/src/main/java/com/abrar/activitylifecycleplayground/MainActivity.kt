@@ -33,4 +33,5 @@ class MainActivity : AppCompatActivity() {
         val userMessage = binding.editTextMessage.text
         File(filesDir, "user message.txt").writeText(userMessage.toString())
     }
+
 }
