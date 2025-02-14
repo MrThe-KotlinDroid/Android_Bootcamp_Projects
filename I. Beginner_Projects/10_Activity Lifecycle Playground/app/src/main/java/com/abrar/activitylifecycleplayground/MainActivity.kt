@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonExit.setOnClickListener { finish() }
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
         val userMessage = binding.editTextMessage.text
