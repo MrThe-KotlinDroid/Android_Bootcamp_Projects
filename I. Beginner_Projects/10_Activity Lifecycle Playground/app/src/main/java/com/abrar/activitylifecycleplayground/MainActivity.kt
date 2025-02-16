@@ -1,6 +1,7 @@
 package com.abrar.activitylifecycleplayground
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -28,9 +29,15 @@ class MainActivity : AppCompatActivity() {
         binding.buttonExit.setOnClickListener { finish() }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        val userMessage = binding.editTextMessage.text
-        File(filesDir, "user message.txt").writeText(userMessage.toString())
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        val userMessage = binding.editTextMessage.text
+//        File(filesDir, "user message.txt").writeText(userMessage.toString())
+//    }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Toast.makeText(this, "Back button pressed", Toast.LENGTH_SHORT).show()
     }
 }
