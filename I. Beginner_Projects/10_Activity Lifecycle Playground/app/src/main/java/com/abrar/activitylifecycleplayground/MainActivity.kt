@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 //        File(filesDir, "user message.txt").writeText(userMessage.toString())
 //    }
 
-
     override fun onBackPressed() {
         super.onBackPressed()
         Toast.makeText(this, "Back button pressed", Toast.LENGTH_SHORT).show()
