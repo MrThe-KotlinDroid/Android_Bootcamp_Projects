@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 //        File(filesDir, "user message.txt").writeText(userMessage.toString())
 //    }
 
-    fun showDialog() {
+    private fun showDialog() {
         AlertDialog.Builder(this)
             .setTitle("Warning!")
             .setMessage("You are about to leave the app. Are you sure you want to exit?")
