@@ -28,10 +28,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.buttonExit.setOnClickListener { finish() }
+        binding.buttonExit.setOnClickListener {
+            showDialog()
+        }
 
         val callback = onBackPressedDispatcher.addCallback {
-            Toast.makeText(this@MainActivity, "In the back button callback", Toast.LENGTH_LONG).show()
+            showDialog()
         }
     }
 
