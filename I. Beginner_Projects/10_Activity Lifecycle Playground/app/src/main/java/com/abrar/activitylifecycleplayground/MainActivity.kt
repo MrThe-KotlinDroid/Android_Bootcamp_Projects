@@ -2,12 +2,12 @@ package com.abrar.activitylifecycleplayground
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
-import java.io.File
 import java.util.Timer
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         binding.buttonExit.setOnClickListener { finish() }
+
+        val callback = onBackPressedDispatcher.addCallback {
+            Toast.makeText(this@MainActivity, "In the back button callback", Toast.LENGTH_LONG).show()
+        }
     }
 
 //    override fun onDestroy() {
