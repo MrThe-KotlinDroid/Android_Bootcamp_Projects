@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
+import java.io.File
 import java.util.Timer
 
 class MainActivity : AppCompatActivity() {
@@ -39,4 +41,10 @@ class MainActivity : AppCompatActivity() {
 //        File(filesDir, "user message.txt").writeText(userMessage.toString())
 //    }
 
+    fun showDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Warning!")
+            .setMessage("You are about to leave the app. Are you sure you want to exit?")
+            .show()
+    }
 }
