@@ -28,13 +28,9 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.buttonExit.setOnClickListener {
-            showDialog()
-        }
+        binding.buttonExit.setOnClickListener { showDialog() }
 
-        val callback = onBackPressedDispatcher.addCallback {
-            showDialog()
-        }
+        val callback = onBackPressedDispatcher.addCallback { showDialog() }
     }
 
 //    override fun onDestroy() {
