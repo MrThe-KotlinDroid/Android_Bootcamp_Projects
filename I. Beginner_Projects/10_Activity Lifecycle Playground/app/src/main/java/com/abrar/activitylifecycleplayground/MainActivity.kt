@@ -1,5 +1,6 @@
 package com.abrar.activitylifecycleplayground
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.addCallback
@@ -29,20 +30,57 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         binding.buttonExit.setOnClickListener { showDialog() }
-
+        binding.buttonSave.setOnClickListener { saveMessage() }
         val callback = onBackPressedDispatcher.addCallback { showDialog() }
+
+        binding.textViewSavedMessage.text = savedInstanceState?.getString("savedMessage")
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        val userMessage = binding.editTextMessage.text
-//        File(filesDir, "user message.txt").writeText(userMessage.toString())
-//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val savedTextViewMessage = binding.textViewSavedMessage.text.toString()
+        outState.putString("savedMessage", savedTextViewMessage)
+    }
+
+    private fun saveMessage() {
+        val userMessage = binding.editTextMessage.text
+        File(filesDir, "user message.txt").writeText(userMessage.toString())
+        binding.textViewSavedMessage.text = "Your message has been saved!\n\nMessage Preview:\n\n$userMessage"
+        binding.editTextMessage.setText("")
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 
     private fun showDialog() {
         AlertDialog.Builder(this)
             .setTitle("Warning!")
-            .setMessage("You are about to leave the app. Are you sure you want to exit?")
+//            .setMessage("You are about to leave the app. Are you sure you want to exit?")
+            .setView(R.layout.dialog_warning)
+            .setPositiveButton("Yes") { _, _ -> finish() }
+            .setNegativeButton("No") { dialog , _ -> dialog.dismiss() }
+            .setNeutralButton("More info") { dialog, _ ->
+                Toast.makeText(this, "This is where the more info screen could be!", Toast.LENGTH_LONG).show()
+                dialog.dismiss()
+            }
             .show()
     }
 }
