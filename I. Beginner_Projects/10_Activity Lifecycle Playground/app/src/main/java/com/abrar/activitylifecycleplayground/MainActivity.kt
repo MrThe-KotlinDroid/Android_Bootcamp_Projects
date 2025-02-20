@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         binding.editTextMessage.setText("")
     }
 
-
     override fun onStart() {
         super.onStart()
     }
