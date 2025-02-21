@@ -80,6 +80,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "This is where the more info screen could be!", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             }
+
             .show()
     }
 }
