@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-
     private fun showDialog() {
         AlertDialog.Builder(this)
             .setTitle("Warning!")
