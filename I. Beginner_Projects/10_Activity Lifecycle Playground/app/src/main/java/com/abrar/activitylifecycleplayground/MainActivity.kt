@@ -13,11 +13,10 @@ import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
 import java.io.File
 import java.util.Timer
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TestFragment.TestFragmentListener {
 
     private lateinit var binding: ActivityMainBinding
-    private var seconds = 0
-    private lateinit var timer: Timer
+    private val testFragment = TestFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +39,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFragment() {
         supportFragmentManager.commit {
-            add(R.id.fragment_container_view, TestFragment())
+            add(R.id.fragment_container_view, testFragment)
         }
     }
 
     private fun removeFragment() {
-
+        supportFragmentManager.commit {
+            remove(testFragment)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -78,5 +79,11 @@ class MainActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             .show()
+    }
+
+    override fun clearActivityScreen() {
+        binding.editTextMessage.setText("")
+        binding.textViewSavedMessage.text = ""
+        removeFragment()
     }
 }
