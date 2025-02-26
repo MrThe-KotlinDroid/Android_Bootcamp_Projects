@@ -17,7 +17,7 @@
             android:exported="false"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".EditRunningRecordActivity"
+            android:name=".running.EditRunningRecordActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

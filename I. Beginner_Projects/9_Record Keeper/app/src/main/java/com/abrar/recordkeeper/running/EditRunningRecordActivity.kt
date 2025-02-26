@@ -1,4 +1,4 @@
-package com.abrar.recordkeeper
+package com.abrar.recordkeeper.running
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
