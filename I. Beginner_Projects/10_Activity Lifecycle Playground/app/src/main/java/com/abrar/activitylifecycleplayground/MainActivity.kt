@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showFragment() {
-
+        supportFragmentManager.beginTransaction()
     }
 
     private fun removeFragment() {
