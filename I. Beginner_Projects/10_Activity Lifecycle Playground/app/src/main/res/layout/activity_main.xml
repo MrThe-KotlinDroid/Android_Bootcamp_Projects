@@ -54,10 +54,8 @@
         android:id="@+id/fragment_container_view"
         android:layout_width="300dp"
         android:layout_height="400dp"
-        tools:layout = "@layout/fragment_test"
-        app:layout_constraintTop_toBottomOf="@id/button_exit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/button_exit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
