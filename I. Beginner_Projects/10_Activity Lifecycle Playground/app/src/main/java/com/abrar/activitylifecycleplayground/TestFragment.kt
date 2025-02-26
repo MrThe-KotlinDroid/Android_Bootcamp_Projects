@@ -22,6 +22,7 @@ class TestFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.textViewFragmentText.text = "We have made it to the Fragment. This is our onViewCreated() code."
     }
 
 }
