@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.commit
 import com.abrar.activitylifecycleplayground.databinding.ActivityMainBinding
 import java.io.File
 import java.util.Timer
@@ -38,7 +39,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showFragment() {
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager.commit {
+            add(R.id.fragment_container_view, TestFragment())
+        }
     }
 
     private fun removeFragment() {
