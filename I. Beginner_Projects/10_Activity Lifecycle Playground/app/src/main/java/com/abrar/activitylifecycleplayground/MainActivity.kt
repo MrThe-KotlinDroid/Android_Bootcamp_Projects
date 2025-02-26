@@ -38,11 +38,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showFragment() {
-        TODO("Not yet implemented")
+
     }
 
     private fun removeFragment() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
