@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
+import com.abrar.recordkeeper.cycling.CyclingFragment
 import com.abrar.recordkeeper.databinding.ActivityMainBinding
 import com.abrar.recordkeeper.running.RunningFragment
 import com.google.android.material.navigation.NavigationBarView
