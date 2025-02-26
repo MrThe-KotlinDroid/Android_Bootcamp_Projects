@@ -1,6 +1,5 @@
 package com.abrar.activitylifecycleplayground
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.addCallback
@@ -31,9 +30,19 @@ class MainActivity : AppCompatActivity() {
         }
         binding.buttonExit.setOnClickListener { showDialog() }
         binding.buttonSave.setOnClickListener { saveMessage() }
+        binding.buttonShowFragment.setOnClickListener { showFragment() }
+        binding.buttonRemoveFragment.setOnClickListener { removeFragment() }
         val callback = onBackPressedDispatcher.addCallback { showDialog() }
 
         binding.textViewSavedMessage.text = savedInstanceState?.getString("savedMessage")
+    }
+
+    private fun showFragment() {
+        TODO("Not yet implemented")
+    }
+
+    private fun removeFragment() {
+        TODO("Not yet implemented")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -45,7 +54,8 @@ class MainActivity : AppCompatActivity() {
     private fun saveMessage() {
         val userMessage = binding.editTextMessage.text
         File(filesDir, "user message.txt").writeText(userMessage.toString())
-        binding.textViewSavedMessage.text = "Your message has been saved!\n\nMessage Preview:\n\n$userMessage"
+        binding.textViewSavedMessage.text =
+            "Your message has been saved!\n\nMessage Preview:\n\n$userMessage"
         binding.editTextMessage.setText("")
     }
 
@@ -55,9 +65,13 @@ class MainActivity : AppCompatActivity() {
 //            .setMessage("You are about to leave the app. Are you sure you want to exit?")
             .setView(R.layout.dialog_warning)
             .setPositiveButton("Yes") { _, _ -> finish() }
-            .setNegativeButton("No") { dialog , _ -> dialog.dismiss() }
+            .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
             .setNeutralButton("More info") { dialog, _ ->
-                Toast.makeText(this, "This is where the more info screen could be!", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this,
+                    "This is where the more info screen could be!",
+                    Toast.LENGTH_LONG
+                ).show()
                 dialog.dismiss()
             }
             .show()
