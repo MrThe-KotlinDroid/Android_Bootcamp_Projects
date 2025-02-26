@@ -16,4 +16,8 @@
     <string name="reset_running_record">Reset Running Record</string>
     <string name="reset_cycling_record">Reset Cycling Record</string>
     <string name="reset_all_record">Reset All Record</string>
+    <string name="record_field_hint">Record</string>
+    <string name="date_field_hint">Date</string>
+    <string name="save_button_text">SAVE</string>
+    <string name="clear_record_button_text">Clear Record</string>
 </resources>
