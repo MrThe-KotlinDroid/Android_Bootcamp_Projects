@@ -1,4 +1,4 @@
-package com.abrar.recordkeeper
+package com.abrar.recordkeeper.running
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.abrar.recordkeeper.EditRunningRecordActivity
 import com.abrar.recordkeeper.databinding.FragmentRunningBinding
 
 class RunningFragment : Fragment() {
