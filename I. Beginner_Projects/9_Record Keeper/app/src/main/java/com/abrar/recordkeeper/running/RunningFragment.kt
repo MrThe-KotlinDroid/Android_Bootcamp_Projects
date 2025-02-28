@@ -39,7 +39,7 @@ class RunningFragment : Fragment() {
         val runningPreferences = requireContext().getSharedPreferences("RunningRecords", AppCompatActivity.MODE_PRIVATE)
 
         binding.textView5kmValue.text = runningPreferences.getString("5km record", null)
-        binding.text.text runningPreferences.getString("5km date", null)
+        binding.textView5kmDate.text = runningPreferences.getString("5km date", null)
     }
 
     private fun launchRunningRecordScreen(distance: String) {
