@@ -2,6 +2,8 @@ package com.abrar.recordkeeper.running
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
+import androidx.preference.PreferenceManager
 import com.abrar.recordkeeper.databinding.ActivityEditRunningRecordBinding
 
 class EditRunningRecordActivity : AppCompatActivity() {
@@ -15,6 +17,10 @@ class EditRunningRecordActivity : AppCompatActivity() {
         val distance = intent.getStringExtra("Distance")
         title = "$distance Record"
 
-        
+        val applicationPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+
+        applicationPreferences.edit {
+            putString("Some application data", "Application preference value here")
+        }
     }
 }
