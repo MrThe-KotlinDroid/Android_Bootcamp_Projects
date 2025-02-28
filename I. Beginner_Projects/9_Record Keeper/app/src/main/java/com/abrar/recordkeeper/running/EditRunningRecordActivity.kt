@@ -14,5 +14,7 @@ class EditRunningRecordActivity : AppCompatActivity() {
         setContentView(binding.root)
         val distance = intent.getStringExtra("Distance")
         title = "$distance Record"
+
+        
     }
 }
