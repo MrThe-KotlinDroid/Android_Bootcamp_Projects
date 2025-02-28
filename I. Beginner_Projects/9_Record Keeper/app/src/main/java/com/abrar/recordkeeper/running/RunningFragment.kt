@@ -24,6 +24,7 @@ class RunningFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpClickListeners()
+        displayRecords()
     }
 
     private fun setUpClickListeners() {
@@ -31,6 +32,10 @@ class RunningFragment : Fragment() {
         binding.container10km.setOnClickListener { launchRunningRecordScreen("10 km") }
         binding.containerHalfMarathon.setOnClickListener { launchRunningRecordScreen("Half Marathon") }
         binding.containerMarathon.setOnClickListener { launchRunningRecordScreen("Marathon") }
+    }
+
+    private fun displayRecords() {
+
     }
 
     private fun launchRunningRecordScreen(distance: String) {
