@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.abrar.recordkeeper.databinding.FragmentRunningBinding
 
@@ -35,7 +36,10 @@ class RunningFragment : Fragment() {
     }
 
     private fun displayRecords() {
+        val runningPreferences = requireContext().getSharedPreferences("RunningRecords", AppCompatActivity.MODE_PRIVATE)
 
+        binding.textView5kmValue.text = runningPreferences.getString("5km record", null)
+        binding.text.text runningPreferences.getString("5km date", null)
     }
 
     private fun launchRunningRecordScreen(distance: String) {
