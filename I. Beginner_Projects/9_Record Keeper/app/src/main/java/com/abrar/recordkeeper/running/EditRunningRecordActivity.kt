@@ -30,6 +30,7 @@ class EditRunningRecordActivity : AppCompatActivity() {
             putInt("Some activity data", 15)
         }
 
+
         val fileNamePreferences = getSharedPreferences("Some shared preferences file", Context.MODE_PRIVATE)
         fileNamePreferences.edit {
             putBoolean("Some preference file name data", false)
