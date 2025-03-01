@@ -44,6 +44,7 @@ class RunningFragment : Fragment() {
         binding.containerMarathon.setOnClickListener { launchRunningRecordScreen("Marathon") }
     }
 
+
     private fun displayRecords() {
         val runningPreferences = requireContext().getSharedPreferences("RunningRecords", AppCompatActivity.MODE_PRIVATE)
 
