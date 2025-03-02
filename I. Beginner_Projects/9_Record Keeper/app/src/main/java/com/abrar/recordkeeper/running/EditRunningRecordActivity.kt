@@ -17,11 +17,13 @@ class EditRunningRecordActivity : AppCompatActivity() {
         binding = ActivityEditRunningRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        displayRecord()
+        title = "Edit $distance Record"
         binding.buttonSave.setOnClickListener {
             saveRecord()
             finish()
         }
+
+        displayRecord()
     }
 
     private fun displayRecord() {
