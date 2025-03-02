@@ -60,4 +60,10 @@ class EditRecordActivity : AppCompatActivity() {
         }
         Toast.makeText(this, "Record deleted", Toast.LENGTH_SHORT).show()
     }
+
+    data class ScreenData(
+        val record: String,
+        val sharedPreferencesName: String,
+        val recordFieldHint: String
+    )
 }
