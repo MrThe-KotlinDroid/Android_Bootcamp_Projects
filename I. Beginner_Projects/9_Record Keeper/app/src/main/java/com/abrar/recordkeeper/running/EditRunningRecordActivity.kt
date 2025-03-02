@@ -10,7 +10,7 @@ class EditRunningRecordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditRunningRecordBinding
     private val runningPreferences by lazy { getSharedPreferences("RunningRecords", MODE_PRIVATE)}
-    private val distance: String? by lazy { intent.getStringExtra("Distance") }
+    private val distance by lazy { intent.getStringExtra("Distance") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
