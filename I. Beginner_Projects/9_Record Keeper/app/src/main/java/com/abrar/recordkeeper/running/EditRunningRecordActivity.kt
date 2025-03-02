@@ -9,7 +9,7 @@ import com.abrar.recordkeeper.databinding.ActivityEditRunningRecordBinding
 class EditRunningRecordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditRunningRecordBinding
-    private val runningPreferences by lazy { getSharedPreferences("RunningRecords", MODE_PRIVATE)}
+    private val runningPreferences by lazy { getSharedPreferences("RunningRecords", MODE_PRIVATE) }
     private val distance by lazy { intent.getStringExtra("Distance") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,14 +28,16 @@ class EditRunningRecordActivity : AppCompatActivity() {
             finish()
         }
         binding.buttonDelete.setOnClickListener {
-
+            clearRecord()
+            finish()
         }
     }
 
+
     private fun displayRecord() {
 
-        binding.editTextRecord.setText(runningPreferences.getString("$distance record", null) )
-        binding.editTextDate.setText(runningPreferences.getString("$distance date", null) )
+        binding.editTextRecord.setText(runningPreferences.getString("$distance record", null))
+        binding.editTextDate.setText(runningPreferences.getString("$distance date", null))
     }
 
     private fun saveRecord() {
@@ -46,7 +48,16 @@ class EditRunningRecordActivity : AppCompatActivity() {
             putString("$distance record", record)
             putString("$distance date", date)
 
-            Toast.makeText(this@EditRunningRecordActivity, "Record saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@EditRunningRecordActivity, "Record saved", Toast.LENGTH_SHORT)
+                .show()
         }
+    }
+
+    private fun clearRecord() {
+        runningPreferences.edit {
+            remove ("$distance record")
+            remove ("$distance date")
+        }
+        Toast.makeText(this, "Record deleted", Toast.LENGTH_SHORT).show()
     }
 }
