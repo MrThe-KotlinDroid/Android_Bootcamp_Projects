@@ -9,13 +9,14 @@ import com.abrar.recordkeeper.databinding.ActivityEditRunningRecordBinding
 class EditRunningRecordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditRunningRecordBinding
+    private val distance: String? by lazy {
+        intent.getStringExtra("Distance")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditRunningRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val distance = intent.getStringExtra("Distance")
-        title = "$distance Record"
 
 
         displayRecord(distance)
