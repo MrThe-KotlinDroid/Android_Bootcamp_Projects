@@ -9,20 +9,26 @@ import com.abrar.recordkeeper.databinding.ActivityEditRecordBinding
 class EditRecordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditRecordBinding
-    private val runningPreferences by lazy { getSharedPreferences("RunningRecords", MODE_PRIVATE) }
-    private val distance by lazy { intent.getStringExtra("Distance") }
+
+    private val screenData: ScreenData by lazy {
+        intent.getSerializableExtra("ScreenData") as ScreenData
+    }
+
+    private val recordPreferences by lazy { getSharedPreferences("RunningRecords", MODE_PRIVATE) }
+    private val record by lazy { intent.getStringExtra("Distance") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         setupUi()
         displayRecord()
     }
 
     private fun setupUi() {
-        title = "Edit $distance Record"
+        title = "Edit $record Record"
         binding.buttonSave.setOnClickListener {
             saveRecord()
             finish()
@@ -36,17 +42,17 @@ class EditRecordActivity : AppCompatActivity() {
 
     private fun displayRecord() {
 
-        binding.editTextRecord.setText(runningPreferences.getString("$distance record", null))
-        binding.editTextDate.setText(runningPreferences.getString("$distance date", null))
+        binding.editTextRecord.setText(recordPreferences.getString("$record record", null))
+        binding.editTextDate.setText(recordPreferences.getString("$record date", null))
     }
 
     private fun saveRecord() {
         val record = binding.editTextRecord.text.toString()
         val date = binding.editTextDate.text.toString()
 
-        runningPreferences.edit {
-            putString("$distance record", record)
-            putString("$distance date", date)
+        recordPreferences.edit {
+            putString("${this@EditRecordActivity.record} record", record)
+            putString("${this@EditRecordActivity.record} date", date)
 
             Toast.makeText(this@EditRecordActivity, "Record saved", Toast.LENGTH_SHORT)
                 .show()
@@ -54,9 +60,9 @@ class EditRecordActivity : AppCompatActivity() {
     }
 
     private fun clearRecord() {
-        runningPreferences.edit {
-            remove ("$distance record")
-            remove ("$distance date")
+        recordPreferences.edit {
+            remove ("$record record")
+            remove ("$record date")
         }
         Toast.makeText(this, "Record deleted", Toast.LENGTH_SHORT).show()
     }
