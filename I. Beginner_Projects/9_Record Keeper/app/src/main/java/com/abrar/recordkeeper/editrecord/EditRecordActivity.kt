@@ -22,6 +22,7 @@ class EditRecordActivity : AppCompatActivity() {
         binding = ActivityEditRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         setupUi()
         displayRecord()
     }
