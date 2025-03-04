@@ -21,7 +21,6 @@ class EditRecordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditRecordBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupUi()
         displayRecord()
     }
