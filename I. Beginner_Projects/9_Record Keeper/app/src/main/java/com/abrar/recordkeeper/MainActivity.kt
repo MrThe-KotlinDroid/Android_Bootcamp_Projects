@@ -12,6 +12,7 @@ import com.abrar.recordkeeper.cycling.CyclingFragment
 import com.abrar.recordkeeper.databinding.ActivityMainBinding
 import com.abrar.recordkeeper.running.RunningFragment
 import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
@@ -64,14 +65,29 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                         getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
                         getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
                     }
+
                     else -> {
                         getSharedPreferences(selection, Context.MODE_PRIVATE).edit() { clear() }
                     }
                 }
                 refreshCurrentFragment()
+                showConfirmation()
             }
             .setNegativeButton("No", null)
             .show()
+    }
+
+    private fun showConfirmation() {
+        val snackbar = Snackbar.make(
+            binding.frameContent,
+            "Records cleared successfully!",
+            Snackbar.LENGTH_LONG
+        )
+        snackbar.anchorView = binding.bottomNav
+        snackbar.setAction("Undo") {
+            // Some code to restore the records
+        }
+        snackbar.show()
     }
 
     private fun refreshCurrentFragment() {
@@ -79,6 +95,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             R.id.bottom_nav_run -> {
                 onRunningClicked()
             }
+
             R.id.bottom_nav_bike -> {
                 onCyclingClicked()
             }
