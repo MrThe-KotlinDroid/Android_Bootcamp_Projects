@@ -34,37 +34,55 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val menuClickHandled = when (item.itemId) {
             R.id.reset_running -> {
-                AlertDialog.Builder(this)
-                    .setTitle("Reset Running Records")
-                    .setMessage("Are you sure you want to clear the records?")
-                    .setPositiveButton("Yes") { _, _ ->
-                        getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
-                    }
-                    .setNegativeButton("No", null)
-                    .show()
+                showConfirmationDialog("running")
                 true
             }
 
             R.id.reset_cycling -> {
-                getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
+                showConfirmationDialog("cycling")
                 true
             }
 
             R.id.reset_all -> {
-                getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
-                getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
+                showConfirmationDialog("all")
                 true
             }
 
             else -> super.onOptionsItemSelected(item)
         }
 
-        when (binding.bottomNav.selectedItemId) {
-            R.id.bottom_nav_run -> { onRunningClicked() }
-            R.id.bottom_nav_bike -> { onCyclingClicked() }
-        }
-
         return menuClickHandled
+    }
+
+    private fun showConfirmationDialog(selection: String) {
+        AlertDialog.Builder(this)
+            .setTitle("Reset $selection Records")
+            .setMessage("Are you sure you want to clear the records?")
+            .setPositiveButton("Yes") { _, _ ->
+                when (selection) {
+                    "all" -> {
+                        getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
+                        getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
+                    }
+                    else -> {
+                        getSharedPreferences(selection, Context.MODE_PRIVATE).edit() { clear() }
+                    }
+                }
+                refreshCurrentFragment()
+            }
+            .setNegativeButton("No", null)
+            .show()
+    }
+
+    private fun refreshCurrentFragment() {
+        when (binding.bottomNav.selectedItemId) {
+            R.id.bottom_nav_run -> {
+                onRunningClicked()
+            }
+            R.id.bottom_nav_bike -> {
+                onCyclingClicked()
+            }
+        }
     }
 
     private fun onRunningClicked(): Boolean {
