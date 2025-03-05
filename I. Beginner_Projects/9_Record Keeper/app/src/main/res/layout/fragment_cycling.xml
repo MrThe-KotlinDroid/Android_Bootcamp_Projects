@@ -57,7 +57,6 @@
                 android:padding="12dp">
 
                 <TextView
-                    android:id="@+id/text_view_longest_ride_heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -79,6 +78,7 @@
                     tools:text="50 km" />
 
                 <TextView
+                    android:id="@+id/text_view_longest_ride_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -104,7 +104,6 @@
                 android:padding="12dp">
 
                 <TextView
-                    android:id="@+id/text_view_biggest_climb_heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -126,6 +125,7 @@
                     tools:text="1500 m" />
 
                 <TextView
+                    android:id="@+id/text_view_biggest_climb_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -151,7 +151,6 @@
                 android:padding="12dp">
 
                 <TextView
-                    android:id="@+id/text_view_best_average_speed_heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -173,6 +172,7 @@
                     tools:text="25 km/h" />
 
                 <TextView
+                    android:id="@+id/text_view_best_average_speed_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
