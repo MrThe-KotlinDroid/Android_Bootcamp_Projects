@@ -33,18 +33,6 @@ class CyclingFragment : Fragment() {
         displayRecords()
     }
 
-    private fun displayRecords() {
-        val cyclingPreferences = requireContext().getSharedPreferences("cycling", AppCompatActivity.MODE_PRIVATE)
-
-        binding.textViewLongestRideHeading.text = cyclingPreferences.getString("Longest Ride record", null)
-        binding.textViewLongestRideValue.text = cyclingPreferences.getString("Longest Ride date", null)
-        binding.textViewBiggestClimbHeading.text = cyclingPreferences.getString("Biggest Climb record", null)
-        binding.textViewBiggestClimbValue.text = cyclingPreferences.getString("Biggest Climb date", null)
-        binding.textViewBestAverageSpeedHeading.text = cyclingPreferences.getString("Best Average Speed record", null)
-        binding.textViewBestAverageSpeedValue.text = cyclingPreferences.getString("Best Average Speed date", null)
-
-    }
-
     private fun setUpClickListeners() {
         binding.containerLongestRide.setOnClickListener {
             launchCyclingRecordScreen(
@@ -64,6 +52,17 @@ class CyclingFragment : Fragment() {
                 "Average Speed"
             )
         }
+    }
+
+    private fun displayRecords() {
+        val cyclingPreferences = requireContext().getSharedPreferences("cycling", AppCompatActivity.MODE_PRIVATE)
+
+        binding.textViewLongestRideValue.text = cyclingPreferences.getString("Longest Ride record", null)
+        binding.textViewLongestRideDate.text = cyclingPreferences.getString("Longest Ride date", null)
+        binding.textViewBiggestClimbValue.text = cyclingPreferences.getString("Biggest Climb record", null)
+        binding.textViewBiggestClimbDate.text = cyclingPreferences.getString("Biggest Climb date", null)
+        binding.textViewBestAverageSpeedValue.text = cyclingPreferences.getString("Best Average Speed record", null)
+        binding.textViewBestAverageSpeedDate.text = cyclingPreferences.getString("Best Average Speed date", null)
     }
 
     private fun launchCyclingRecordScreen(record: String, recordFieldHint: String) {
