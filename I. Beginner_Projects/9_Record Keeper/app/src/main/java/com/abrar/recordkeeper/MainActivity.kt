@@ -1,10 +1,11 @@
 package com.abrar.recordkeeper
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.fragment.app.commit
 import com.abrar.recordkeeper.cycling.CyclingFragment
 import com.abrar.recordkeeper.databinding.ActivityMainBinding
@@ -31,15 +32,16 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.reset_running -> {
-            Toast.makeText(this, "Clicked on Reset Running Menu item", Toast.LENGTH_SHORT).show()
+            getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
             true
         }
         R.id.reset_cycling -> {
-            Toast.makeText(this, "Clicked on Reset cycling Menu item", Toast.LENGTH_SHORT).show()
+            getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
             true
         }
         R.id.reset_all -> {
-            Toast.makeText(this, "Clicked on Reset All Menu item", Toast.LENGTH_SHORT).show()
+            getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
+            getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
             true
         }
         else -> super.onOptionsItemSelected(item)
