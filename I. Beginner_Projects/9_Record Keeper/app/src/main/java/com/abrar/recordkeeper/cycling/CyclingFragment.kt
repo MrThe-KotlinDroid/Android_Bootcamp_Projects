@@ -36,7 +36,12 @@ class CyclingFragment : Fragment() {
     private fun displayRecords() {
         val cyclingPreferences = requireContext().getSharedPreferences("cycling", AppCompatActivity.MODE_PRIVATE)
 
-
+        binding.textViewLongestRideHeading.text = cyclingPreferences.getString("Longest Ride record", null)
+        binding.textViewLongestRideValue.text = cyclingPreferences.getString("Longest Ride date", null)
+        binding.textViewBiggestClimbHeading.text = cyclingPreferences.getString("Biggest Climb record", null)
+        binding.textViewBiggestClimbValue.text = cyclingPreferences.getString("Biggest Climb date", null)
+        binding.textViewBestAverageSpeedHeading.text = cyclingPreferences.getString("Best Average Speed record", null)
+        binding.textViewBestAverageSpeedValue.text = cyclingPreferences.getString("Best Average Speed date", null)
 
     }
 
