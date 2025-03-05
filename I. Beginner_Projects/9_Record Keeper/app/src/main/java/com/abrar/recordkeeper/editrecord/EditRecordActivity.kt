@@ -5,17 +5,24 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.abrar.recordkeeper.databinding.ActivityEditRecordBinding
+import java.io.Serializable
 
 class EditRecordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditRecordBinding
 
     private val screenData: ScreenData by lazy {
-        intent.getSerializableExtra("ScreenData") as ScreenData
+        intent.getSerializableExtra("screen_data") as ScreenData
     }
 
-    private val recordPreferences by lazy { getSharedPreferences("RunningRecords", MODE_PRIVATE) }
-    private val record by lazy { intent.getStringExtra("Distance") }
+    private val recordPreferences by lazy {
+        getSharedPreferences(
+            screenData.sharedPreferencesName,
+            MODE_PRIVATE
+        )
+    }
+
+    private val record by lazy { intent.getStringExtra(screenData.record) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +66,8 @@ class EditRecordActivity : AppCompatActivity() {
 
     private fun clearRecord() {
         recordPreferences.edit {
-            remove ("$record record")
-            remove ("$record date")
+            remove("$record record")
+            remove("$record date")
         }
         Toast.makeText(this, "Record deleted", Toast.LENGTH_SHORT).show()
     }
@@ -69,5 +76,5 @@ class EditRecordActivity : AppCompatActivity() {
         val record: String,
         val sharedPreferencesName: String,
         val recordFieldHint: String
-    )
+    ) : Serializable
 }
