@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.fragment.app.commit
@@ -30,21 +31,40 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.reset_running -> {
-            getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
-            true
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val menuClickHandled = when (item.itemId) {
+            R.id.reset_running -> {
+                AlertDialog.Builder(this)
+                    .setTitle("Reset Running Records")
+                    .setMessage("Are you sure you want to clear the records?")
+                    .setPositiveButton("Yes") { _, _ ->
+                        getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
+                    }
+                    .setNegativeButton("No", null)
+                    .show()
+                true
+            }
+
+            R.id.reset_cycling -> {
+                getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
+                true
+            }
+
+            R.id.reset_all -> {
+                getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
+                getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
-        R.id.reset_cycling -> {
-            getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
-            true
+
+        when (binding.bottomNav.selectedItemId) {
+            R.id.bottom_nav_run -> { onRunningClicked() }
+            R.id.bottom_nav_bike -> { onCyclingClicked() }
         }
-        R.id.reset_all -> {
-            getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
-            getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
-            true
-        }
-        else -> super.onOptionsItemSelected(item)
+
+        return menuClickHandled
     }
 
     private fun onRunningClicked(): Boolean {
