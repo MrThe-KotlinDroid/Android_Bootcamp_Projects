@@ -14,10 +14,6 @@ class RunningFragment : Fragment() {
 
     private lateinit var binding: FragmentRunningBinding
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

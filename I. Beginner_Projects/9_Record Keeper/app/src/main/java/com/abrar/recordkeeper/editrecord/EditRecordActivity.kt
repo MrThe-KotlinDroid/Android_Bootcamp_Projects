@@ -32,6 +32,7 @@ class EditRecordActivity : AppCompatActivity() {
 
     private fun setupUi() {
         title = "Edit ${screenData.record} Record"
+        binding.textInputRecord.hint = screenData.recordFieldHint
         binding.buttonSave.setOnClickListener {
             saveRecord()
             finish()
