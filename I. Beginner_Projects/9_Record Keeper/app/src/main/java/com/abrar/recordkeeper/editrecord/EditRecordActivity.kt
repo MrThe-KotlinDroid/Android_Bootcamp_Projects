@@ -20,6 +20,7 @@ class EditRecordActivity : AppCompatActivity() {
         }
     }
 
+
     private val recordPreferences by lazy {
         getSharedPreferences(
             screenData.sharedPreferencesName,
