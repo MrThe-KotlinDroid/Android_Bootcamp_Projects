@@ -1,6 +1,5 @@
 package com.abrar.recordkeeper.running
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -42,14 +41,17 @@ class RunningFragment : Fragment() {
     }
 
     private fun displayRecords() {
-        val runningPreferences = requireContext().getSharedPreferences("running", AppCompatActivity.MODE_PRIVATE)
+        val runningPreferences =
+            requireContext().getSharedPreferences("running", AppCompatActivity.MODE_PRIVATE)
 
         binding.textView5kmValue.text = runningPreferences.getString("5km record", null)
         binding.textView5kmDate.text = runningPreferences.getString("5km date", null)
         binding.textView10kmValue.text = runningPreferences.getString("10km record", null)
         binding.textView10kmDate.text = runningPreferences.getString("10km date", null)
-        binding.textViewHalfMarathonValue.text = runningPreferences.getString("Half Marathon record", null)
-        binding.textViewHalfMarathonDate.text = runningPreferences.getString("Half Marathon date", null)
+        binding.textViewHalfMarathonValue.text =
+            runningPreferences.getString("Half Marathon record", null)
+        binding.textViewHalfMarathonDate.text =
+            runningPreferences.getString("Half Marathon date", null)
         binding.textViewMarathonValue.text = runningPreferences.getString("Marathon record", null)
         binding.textViewMarathonDate.text = runningPreferences.getString("Marathon date", null)
 
