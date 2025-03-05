@@ -16,6 +16,7 @@ class EditRecordActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getSerializableExtra("screen_data", ScreenData::class.java) as ScreenData
         } else {
+            @Suppress("DEPRECATION")
             intent.getSerializableExtra("screen_data") as ScreenData
         }
     }
