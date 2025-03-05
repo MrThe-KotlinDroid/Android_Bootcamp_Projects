@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.abrar.recordkeeper.databinding.FragmentCyclingBinding
 import com.abrar.recordkeeper.editrecord.EditRecordActivity
@@ -25,6 +26,17 @@ class CyclingFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpClickListeners()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        displayRecords()
+    }
+
+    private fun displayRecords() {
+       val cyclingPreferences = requireContext().getSharedPreferences("cycling", AppCompatActivity.MODE_PRIVATE)
+
+
     }
 
     private fun setUpClickListeners() {
