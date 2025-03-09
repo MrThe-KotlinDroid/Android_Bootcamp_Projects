@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             .show()
     }
 
+
     private fun showConfirmation() {
         val snackbar = Snackbar.make(
             binding.frameContent,
