@@ -14,6 +14,10 @@ import com.abrar.recordkeeper.running.RunningFragment
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
 
+const val RUNNING = "running"
+const val CYCLING = "cycling"
+const val ALL = "all"
+
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
@@ -32,21 +36,20 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         return true
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val menuClickHandled = when (item.itemId) {
             R.id.reset_running -> {
-                showConfirmationDialog("running")
+                showConfirmationDialog(RUNNING)
                 true
             }
 
             R.id.reset_cycling -> {
-                showConfirmationDialog("cycling")
+                showConfirmationDialog(CYCLING)
                 true
             }
 
             R.id.reset_all -> {
-                showConfirmationDialog("all")
+                showConfirmationDialog(ALL)
                 true
             }
 
@@ -62,9 +65,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             .setMessage("Are you sure you want to clear the records?")
             .setPositiveButton("Yes") { _, _ ->
                 when (selection) {
-                    "all" -> {
-                        getSharedPreferences("running", Context.MODE_PRIVATE).edit() { clear() }
-                        getSharedPreferences("cycling", Context.MODE_PRIVATE).edit() { clear() }
+                    ALL -> {
+                        getSharedPreferences(RUNNING, Context.MODE_PRIVATE).edit() { clear() }
+                        getSharedPreferences(CYCLING, Context.MODE_PRIVATE).edit() { clear() }
                     }
 
                     else -> {
