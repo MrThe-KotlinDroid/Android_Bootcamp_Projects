@@ -66,12 +66,12 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             .setPositiveButton("Yes") { _, _ ->
                 when (selection) {
                     ALL -> {
-                        getSharedPreferences(RUNNING, Context.MODE_PRIVATE).edit() { clear() }
-                        getSharedPreferences(CYCLING, Context.MODE_PRIVATE).edit() { clear() }
+                        getSharedPreferences(RUNNING, Context.MODE_PRIVATE).edit { clear() }
+                        getSharedPreferences(CYCLING, Context.MODE_PRIVATE).edit { clear() }
                     }
 
                     else -> {
-                        getSharedPreferences(selection, Context.MODE_PRIVATE).edit() { clear() }
+                        getSharedPreferences(selection, Context.MODE_PRIVATE).edit { clear() }
                     }
                 }
                 refreshCurrentFragment()
@@ -82,16 +82,16 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
 
     private fun showConfirmation() {
-        val snackbar = Snackbar.make(
+        val snackBar = Snackbar.make(
             binding.frameContent,
             "Records cleared successfully!",
             Snackbar.LENGTH_LONG
         )
-        snackbar.anchorView = binding.bottomNav
-        snackbar.setAction("Undo") {
+        snackBar.anchorView = binding.bottomNav
+        snackBar.setAction("Undo") {
             // Some code to restore the records
         }
-        snackbar.show()
+        snackBar.show()
     }
 
     private fun refreshCurrentFragment() {
