@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         return menuClickHandled
     }
 
-
     private fun showConfirmationDialog(selection: String) {
         AlertDialog.Builder(this)
             .setTitle("Reset $selection Records")
