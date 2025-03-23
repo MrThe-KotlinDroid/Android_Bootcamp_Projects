@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.abrar.recordkeeper.RUNNING
 import com.abrar.recordkeeper.databinding.FragmentRunningBinding
 import com.abrar.recordkeeper.editrecord.EditRecordActivity
 import com.abrar.recordkeeper.editrecord.INTENT_EXTRA_SCREEN_DATA
@@ -43,24 +42,30 @@ class RunningFragment : Fragment() {
     }
 
     private fun displayRecords() {
-        val runningPreferences = requireContext().getSharedPreferences(RUNNING, AppCompatActivity.MODE_PRIVATE)
+        val runningPreferences = requireContext().getSharedPreferences(FILENAME, AppCompatActivity.MODE_PRIVATE)
 
-        binding.textView5kmValue.text = runningPreferences.getString("5km record", null)
-        binding.textView5kmDate.text = runningPreferences.getString("5km date", null)
-        binding.textView10kmValue.text = runningPreferences.getString("10km record", null)
-        binding.textView10kmDate.text = runningPreferences.getString("10km date", null)
-        binding.textViewHalfMarathonValue.text = runningPreferences.getString("Half Marathon record", null)
-        binding.textViewHalfMarathonDate.text = runningPreferences.getString("Half Marathon date", null)
-        binding.textViewMarathonValue.text = runningPreferences.getString("Marathon record", null)
-        binding.textViewMarathonDate.text = runningPreferences.getString("Marathon date", null)
+        binding.textView5kmValue.text = runningPreferences.getString("5km ${EditRecordActivity.SHARED_PREFERENCES_RECORD_KEY}", null)
+        binding.textView5kmDate.text = runningPreferences.getString("5km ${EditRecordActivity.SHARED_PREFERENCES_DATE_KEY}", null)
+        binding.textView10kmValue.text = runningPreferences.getString("10km ${EditRecordActivity.SHARED_PREFERENCES_RECORD_KEY}", null)
+        binding.textView10kmDate.text = runningPreferences.getString("10km ${EditRecordActivity.SHARED_PREFERENCES_DATE_KEY}", null)
+        binding.textViewHalfMarathonValue.text = runningPreferences.getString("Half Marathon ${EditRecordActivity.SHARED_PREFERENCES_RECORD_KEY}", null)
+        binding.textViewHalfMarathonDate.text = runningPreferences.getString("Half Marathon ${EditRecordActivity.SHARED_PREFERENCES_DATE_KEY}", null)
+        binding.textViewMarathonValue.text = runningPreferences.getString("Marathon ${EditRecordActivity.SHARED_PREFERENCES_RECORD_KEY}", null)
+        binding.textViewMarathonDate.text = runningPreferences.getString("Marathon ${EditRecordActivity.SHARED_PREFERENCES_DATE_KEY}", null)
 
     }
 
     private fun launchRunningRecordScreen(distance: String) {
         val intent = Intent(context, EditRecordActivity::class.java)
 
-        intent.putExtra(INTENT_EXTRA_SCREEN_DATA, EditRecordActivity.ScreenData(distance, RUNNING, "Time"))
+        intent.putExtra(INTENT_EXTRA_SCREEN_DATA, EditRecordActivity.ScreenData(distance, FILENAME, "Time"))
         startActivity(intent)
+    }
+
+    companion object {
+
+        const val FILENAME = "running"
+
     }
 
 }
