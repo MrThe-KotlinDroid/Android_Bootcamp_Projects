@@ -2,13 +2,12 @@ package com.abrar.recordkeeper.editrecord
 
 import android.os.Build
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.abrar.recordkeeper.databinding.ActivityEditRecordBinding
 import java.io.Serializable
-
-const val INTENT_EXTRA_SCREEN_DATA = "screen_data"
 
 class EditRecordActivity : AppCompatActivity() {
 
@@ -37,6 +36,17 @@ class EditRecordActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupUi()
         displayRecord()
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setupUi() {
@@ -87,6 +97,7 @@ class EditRecordActivity : AppCompatActivity() {
     ) : Serializable
 
     companion object {
+        const val INTENT_EXTRA_SCREEN_DATA = "screen_data"
         const val SHARED_PREFERENCES_RECORD_KEY = "record"
         const val SHARED_PREFERENCES_DATE_KEY = "date"
     }

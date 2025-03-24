@@ -66,9 +66,11 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                         getSharedPreferences(RunningFragment.FILENAME, Context.MODE_PRIVATE).edit { clear() }
                         getSharedPreferences(CyclingFragment.FILENAME, Context.MODE_PRIVATE).edit { clear() }
                     }
-
-                    else -> {
-                        getSharedPreferences(selection, Context.MODE_PRIVATE).edit { clear() }
+                    RUNNING_DISPLAY_VALUE -> {
+                        getSharedPreferences(RunningFragment.FILENAME, Context.MODE_PRIVATE).edit { clear() }
+                    }
+                    CYCLING_DISPLAY_VALUE -> {
+                        getSharedPreferences(CyclingFragment.FILENAME, Context.MODE_PRIVATE).edit { clear() }
                     }
                 }
                 refreshCurrentFragment()
