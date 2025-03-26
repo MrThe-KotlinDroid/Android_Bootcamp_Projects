@@ -1,8 +1,9 @@
 <resources>
+    <color name="green200">#A5D6A7</color>
+    <color name="green500">#4CAF50</color>
+    <color name="green800">#2E7D32</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_gray">#323232</color>
     <color name="light_gray">#D5D5D5</color>
-    <color name="my_dark_primary_dark">#000000</color>
-    <color name="grey">#808080</color>
 </resources>
