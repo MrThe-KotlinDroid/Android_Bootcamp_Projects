@@ -1,9 +1,13 @@
 <resources>
-    <color name="green200">#A5D6A7</color>
-    <color name="green500">#4CAF50</color>
-    <color name="green800">#2E7D32</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="dark_gray">#323232</color>
-    <color name="light_gray">#D5D5D5</color>
-</resources>
+        <color name="green200">#A5D6A7</color>
+        <color name="green500">#4CAF50</color>
+        <color name="green800">#2E7D32</color>
+        <color name="colorPrimary">#4CAF50</color>
+        <color name="colorPrimaryDark">#2E7D32</color>
+        <color name="black">#FF000000</color>
+        <color name="white">#FFFFFFFF</color>
+        <color name="dark_gray">#323232</color>
+        <color name="light_gray">#D5D5D5</color>
+        <color name="textColorPrimaryLight">#FF000000</color> <!-- Black for light mode -->
+        <color name="textColorPrimaryDark">#FFFFFFFF</color> <!-- White for dark mode -->
+    </resources>

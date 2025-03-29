@@ -8,23 +8,32 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 
+    <!-- Base application theme for light mode. -->
+    <style name="Base.Theme.RecordKeeper.Light" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/green500</item>
+        <item name="colorPrimaryVariant">@color/green800</item>
+        <item name="colorOnBackground">@color/light_gray</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
     <style name="RecordNameTextAppearance">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">?attr/colorPrimary</item>
         <item name="android:textSize">20sp</item>
-
     </style>
 
     <style name="RecordValueTextAppearance">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">?attr/colorOnBackground</item>
         <item name="fontFamily">sans-serif-light</item>
-
     </style>
-    
+
     <style name="RecordDateTextAppearance">
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">16sp</item>
-
     </style>
+
+    <style name="Theme.RecordKeeper" parent="Base.Theme.RecordKeeper" />
+    <style name="Theme.RecordKeeper.Light" parent="Base.Theme.RecordKeeper.Light" />
 </resources>
