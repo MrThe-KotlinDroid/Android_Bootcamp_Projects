@@ -40,6 +40,12 @@ class CyclingFragment : Fragment() {
         binding.containerBestAverageSpeed.setOnClickListener { launchCyclingRecordScreen(RecordConstants.RECORD_BEST_AVERAGE_SPEED, "Average Speed") }
     }
 
+    private fun launchCyclingRecordScreen(record: String, recordFieldHint: String) {
+        val intent = Intent(context, EditRecordActivity::class.java)
+        intent.putExtra(EditRecordActivity.INTENT_EXTRA_SCREEN_DATA, EditRecordActivity.ScreenData(record, FILENAME, recordFieldHint))
+        startActivity(intent)
+    }
+
     private fun displayRecords() {
         val cyclingPreferences = requireContext().getSharedPreferences(FILENAME, AppCompatActivity.MODE_PRIVATE)
 
@@ -49,12 +55,6 @@ class CyclingFragment : Fragment() {
         binding.textViewBiggestClimbDate.text = cyclingPreferences.getString("${RecordConstants.RECORD_BIGGEST_CLIMB} ${EditRecordActivity.SHARED_PREFERENCES_DATE_KEY}", null)
         binding.textViewBestAverageSpeedValue.text = cyclingPreferences.getString("${RecordConstants.RECORD_BEST_AVERAGE_SPEED} ${EditRecordActivity.SHARED_PREFERENCES_RECORD_KEY}", null)
         binding.textViewBestAverageSpeedDate.text = cyclingPreferences.getString("${RecordConstants.RECORD_BEST_AVERAGE_SPEED} ${EditRecordActivity.SHARED_PREFERENCES_DATE_KEY}", null)
-    }
-
-    private fun launchCyclingRecordScreen(record: String, recordFieldHint: String) {
-        val intent = Intent(context, EditRecordActivity::class.java)
-        intent.putExtra(EditRecordActivity.INTENT_EXTRA_SCREEN_DATA, EditRecordActivity.ScreenData(record, FILENAME, recordFieldHint))
-        startActivity(intent)
     }
 
     companion object {
