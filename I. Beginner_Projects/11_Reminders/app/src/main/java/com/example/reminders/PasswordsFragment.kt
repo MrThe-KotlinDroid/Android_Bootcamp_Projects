@@ -41,6 +41,7 @@ class PasswordsFragment: Fragment() {
         binding.textViewBikeLockValue.text = preferences.getString(PREF_BIKE_LOCK, null)
     }
 
+
     private fun showEditDialog(preferenceKey: String) {
         val dialogBinding = DialogEditReminderBinding.inflate(LayoutInflater.from(requireContext()))
         dialogBinding.editTextValue.setText(preferences.getString(preferenceKey, null))
