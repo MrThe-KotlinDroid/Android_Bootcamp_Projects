@@ -3,6 +3,7 @@ package com.example.reminders
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentActivity
@@ -26,8 +27,14 @@ class MainActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = "Passwords"
-                1 -> tab.text = "General Info"
+                0 -> {
+                    tab.text = "Passwords"
+                    tab.icon = AppCompatResources.getDrawable(this, R.drawable.password_24px)
+                }
+                1 -> {
+                    tab.text = "General Info"
+                    tab.icon = AppCompatResources.getDrawable(this, R.drawable.info_24px)
+                }
             }
         }.attach()
     }
