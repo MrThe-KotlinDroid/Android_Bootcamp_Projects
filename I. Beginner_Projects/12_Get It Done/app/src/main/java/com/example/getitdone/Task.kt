@@ -11,5 +11,4 @@ data class Task(
     val description: String? = null,
     @ColumnInfo(name = "is_starred") val isStarred: Boolean = false
 
-
 )
