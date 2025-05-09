@@ -1,4 +1,4 @@
-package com.example.getitdone
+package com.example.getitdone.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -10,5 +10,4 @@ data class Task(
     val title: String,
     val description: String? = null,
     @ColumnInfo(name = "is_starred") val isStarred: Boolean = false
-
 )
