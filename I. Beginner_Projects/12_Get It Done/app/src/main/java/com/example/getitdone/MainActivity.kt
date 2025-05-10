@@ -28,9 +28,9 @@ class MainActivity : AppCompatActivity() {
               tab.text = "Tasks"
         }.attach()
 
-        binding.fab.setOnClickListener {
-            showAddTaskDialogue()
-        }
+        binding.fab.setOnClickListener { showAddTaskDialogue() }
+
+        
     }
 
     private fun showAddTaskDialogue() {
