@@ -10,12 +10,13 @@ abstract class GetItDoneDatabase : RoomDatabase() {
 
     abstract fun getTaskDao() : TaskDao
 
-}
-
-fun createDatabase(context: Context): GetItDoneDatabase {
-    return Room.databaseBuilder(
-        context,
-        GetItDoneDatabase::class.java,
-        "get-it-done-database"
-    ).build()
+    companion object {
+        fun createDatabase(context: Context): GetItDoneDatabase {
+            return Room.databaseBuilder(
+                context,
+                GetItDoneDatabase::class.java,
+                "get-it-done-database"
+            ).build()
+        }
+    }
 }

@@ -2,13 +2,12 @@ package com.example.getitdone
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.getitdone.data.GetItDoneDatabase
+import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -24,13 +23,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.pager.adapter = PagerAdapter(this)
-        TabLayoutMediator(binding.tabs, binding.pager) { tab, position ->
+        TabLayoutMediator(binding.tabs, binding.pager) { tab, _ ->
               tab.text = "Tasks"
         }.attach()
 
         binding.fab.setOnClickListener { showAddTaskDialogue() }
 
-        
+        val database = GetItDoneDatabase.createDatabase(this)
+
+        val taskDao = database.getTaskDao()
+
+        Thread {
+            taskDao.createTask(Task(title = "Some task"))
+            taskDao.getAllTasks()
+        }.start()
     }
 
     private fun showAddTaskDialogue() {
