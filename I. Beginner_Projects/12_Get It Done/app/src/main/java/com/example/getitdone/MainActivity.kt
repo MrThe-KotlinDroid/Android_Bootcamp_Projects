@@ -1,21 +1,21 @@
 package com.example.getitdone
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.getitdone.data.GetItDoneDatabase
-import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var database: GetItDoneDatabase
+    private val taskDao by lazy { database.getTaskDao() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,40 +24,26 @@ class MainActivity : AppCompatActivity() {
 
         binding.pager.adapter = PagerAdapter(this)
         TabLayoutMediator(binding.tabs, binding.pager) { tab, _ ->
-              tab.text = "Tasks"
+            tab.text = "Tasks"
         }.attach()
 
         binding.fab.setOnClickListener { showAddTaskDialogue() }
 
-        val database = GetItDoneDatabase.createDatabase(this)
+        database = GetItDoneDatabase.createDatabase(this)
 
-        val taskDao = database.getTaskDao()
-
-        Thread {
-            taskDao.createTask(Task(title = "Some task"))
-            taskDao.getAllTasks()
-        }.start()
     }
 
     private fun showAddTaskDialogue() {
         val dialogBinding = DialogAddTaskBinding.inflate(layoutInflater)
-        MaterialAlertDialogBuilder(this)
-            .setTitle("Add new task")
-            .setView(dialogBinding.root)
-            .setPositiveButton("Save") { _, _ ->
-                Toast.makeText(
-                    this,
-                    "Your tak is: ${dialogBinding.editText.text}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
+
+        val dialog = BottomSheetDialog(this)
+        dialog.setContentView(dialogBinding.root)
+        dialog.show()
     }
 
 
     inner class PagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
-        override fun getItemCount( ) = 1
+        override fun getItemCount() = 1
 
         override fun createFragment(position: Int): Fragment {
             return TasksFragment()
