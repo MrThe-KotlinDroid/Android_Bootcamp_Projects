@@ -1,6 +1,7 @@
 package com.example.getitdone
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -10,6 +11,7 @@ import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
+import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +40,13 @@ class MainActivity : AppCompatActivity() {
 
         val dialog = BottomSheetDialog(this)
         dialog.setContentView(dialogBinding.root)
+
+        dialogBinding.buttonShowDetails.setOnClickListener {
+
+            dialogBinding.editTextTaskDetails.visibility =
+                if (dialogBinding.editTextTaskDetails.isVisible) View.GONE else View.VISIBLE
+        }
+
         dialog.show()
     }
 
