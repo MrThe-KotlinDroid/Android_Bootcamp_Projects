@@ -1,4 +1,4 @@
-package com.example.getitdone
+package com.example.getitdone.ui.tasks
 
 import android.os.Bundle
 import android.view.LayoutInflater
