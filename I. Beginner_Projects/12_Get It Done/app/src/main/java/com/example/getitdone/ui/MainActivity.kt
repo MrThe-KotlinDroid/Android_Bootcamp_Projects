@@ -1,4 +1,4 @@
-package com.example.getitdone
+package com.example.getitdone.ui
 
 import android.os.Bundle
 import android.view.View
@@ -12,6 +12,9 @@ import com.example.getitdone.databinding.DialogAddTaskBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 import androidx.core.view.isVisible
+import com.example.getitdone.data.Task
+import com.example.getitdone.ui.tasks.TasksFragment
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,9 +45,19 @@ class MainActivity : AppCompatActivity() {
         dialog.setContentView(dialogBinding.root)
 
         dialogBinding.buttonShowDetails.setOnClickListener {
-
             dialogBinding.editTextTaskDetails.visibility =
                 if (dialogBinding.editTextTaskDetails.isVisible) View.GONE else View.VISIBLE
+        }
+
+        dialogBinding.buttonSave.setOnClickListener {
+            val task = Task (
+                title = dialogBinding.editTextTaskTitle.text.toString(),
+                description = dialogBinding.editTextTaskDetails.text.toString()
+            )
+            thread {
+                taskDao.createTask(task)
+            }
+            dialog.dismiss()
         }
 
         dialog.show()
