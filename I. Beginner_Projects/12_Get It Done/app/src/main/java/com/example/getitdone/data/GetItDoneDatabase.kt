@@ -12,9 +12,10 @@ abstract class GetItDoneDatabase : RoomDatabase() {
 
     companion object {
 
+        @Volatile
         private var DATABASE_INSTANCE: GetItDoneDatabase? = null
 
-        fun createDatabase(context: Context): GetItDoneDatabase {
+        fun getDatabase(context: Context): GetItDoneDatabase {
             // If (we don't have a database) make one! else return the existing one
             return DATABASE_INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
