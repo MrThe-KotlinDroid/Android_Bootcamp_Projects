@@ -20,7 +20,7 @@ abstract class GetItDoneDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context,
                     GetItDoneDatabase::class.java,
-                    "get-it-done-databse"
+                    "get-it-done-database"
                 ).build()
                 DATABASE_INSTANCE = instance
                 instance
