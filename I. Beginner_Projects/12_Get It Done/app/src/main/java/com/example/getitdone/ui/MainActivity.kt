@@ -3,17 +3,17 @@ package com.example.getitdone.ui
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.getitdone.data.GetItDoneDatabase
+import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
+import com.example.getitdone.ui.tasks.TasksFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
-import androidx.core.view.isVisible
-import com.example.getitdone.data.Task
-import com.example.getitdone.ui.tasks.TasksFragment
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
