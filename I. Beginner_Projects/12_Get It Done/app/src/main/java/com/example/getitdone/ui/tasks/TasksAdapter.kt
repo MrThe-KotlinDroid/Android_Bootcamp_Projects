@@ -29,8 +29,8 @@ class TasksAdapter(private val tasks: List<Task>, private val listener: TaskUpda
             binding.checkBox.isChecked = task.isComplete
             binding.toggleStar.isChecked = task.isStarred
             if (task.isComplete) {
-                binding.textViewTitle.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                binding.textViewDetails.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                binding.textViewTitle.paintFlags = binding.textViewTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                binding.textViewDetails.paintFlags = binding.textViewDetails.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             }
             binding.textViewTitle.text = task.title
             binding.textViewDetails.text = task.description
