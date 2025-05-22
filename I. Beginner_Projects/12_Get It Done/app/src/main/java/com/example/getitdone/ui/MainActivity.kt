@@ -72,6 +72,5 @@ class MainActivity : AppCompatActivity() {
         override fun createFragment(position: Int): Fragment {
             return tasksFragment
         }
-
     }
 }
