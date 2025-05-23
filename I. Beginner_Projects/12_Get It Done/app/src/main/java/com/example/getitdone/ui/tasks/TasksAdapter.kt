@@ -8,8 +8,10 @@ import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.ItemTaskBinding
 import com.google.android.material.checkbox.MaterialCheckBox
 
-class TasksAdapter(private val tasks: List<Task>, private val listener: TaskUpdatedListener) :
+class TasksAdapter(private val listener: TaskUpdatedListener) :
     RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
+
+    private var tasks: List<Task> = listOf()
 
     override fun getItemCount() = tasks.size
 
@@ -22,6 +24,11 @@ class TasksAdapter(private val tasks: List<Task>, private val listener: TaskUpda
         holder.bind(tasks[position])
     }
 
+    fun setTasks(tasks: List<Task>) {
+        this.tasks = tasks
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(private val binding: ItemTaskBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -29,8 +36,13 @@ class TasksAdapter(private val tasks: List<Task>, private val listener: TaskUpda
             binding.checkBox.isChecked = task.isComplete
             binding.toggleStar.isChecked = task.isStarred
             if (task.isComplete) {
-                binding.textViewTitle.paintFlags = binding.textViewTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                binding.textViewDetails.paintFlags = binding.textViewDetails.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                binding.textViewTitle.paintFlags =
+                    binding.textViewTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                binding.textViewDetails.paintFlags =
+                    binding.textViewDetails.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            } else {
+                binding.textViewTitle.paintFlags = 0
+                binding.textViewDetails.paintFlags = 0
             }
             binding.textViewTitle.text = task.title
             binding.textViewDetails.text = task.description
@@ -41,7 +53,7 @@ class TasksAdapter(private val tasks: List<Task>, private val listener: TaskUpda
                 }
                 listener.onTaskUpdated(updatedTask)
             }
-            binding.toggleStar.addOnCheckedStateChangedListener {_, state ->
+            binding.toggleStar.addOnCheckedStateChangedListener { _, state ->
                 val updatedTask = when (state) {
                     MaterialCheckBox.STATE_CHECKED -> task.copy(isStarred = true)
                     else -> task.copy(isStarred = false)
