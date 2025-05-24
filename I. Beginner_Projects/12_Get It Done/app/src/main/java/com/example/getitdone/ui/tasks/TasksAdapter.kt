@@ -8,8 +8,7 @@ import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.ItemTaskBinding
 import com.google.android.material.checkbox.MaterialCheckBox
 
-class TasksAdapter(private val listener: TaskUpdatedListener) :
-    RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
+class TasksAdapter(private val listener: TaskUpdatedListener) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
     private var tasks: List<Task> = listOf()
 
