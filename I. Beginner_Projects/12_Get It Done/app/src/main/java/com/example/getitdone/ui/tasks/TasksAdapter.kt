@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.ItemTaskBinding
-import com.google.android.material.checkbox.MaterialCheckBox
 
 class TasksAdapter(private val listener: TaskUpdatedListener) : RecyclerView.Adapter<TasksAdapter.ViewHolder>() {
 
@@ -45,18 +44,12 @@ class TasksAdapter(private val listener: TaskUpdatedListener) : RecyclerView.Ada
             }
             binding.textViewTitle.text = task.title
             binding.textViewDetails.text = task.description
-            binding.checkBox.addOnCheckedStateChangedListener { _, state ->
-                val updatedTask = when (state) {
-                    MaterialCheckBox.STATE_CHECKED -> task.copy(isComplete = true)
-                    else -> task.copy(isComplete = false)
-                }
+            binding.checkBox.setOnClickListener {
+                val updatedTask = task.copy(isComplete = binding.checkBox.isChecked)
                 listener.onTaskUpdated(updatedTask)
             }
-            binding.toggleStar.addOnCheckedStateChangedListener { _, state ->
-                val updatedTask = when (state) {
-                    MaterialCheckBox.STATE_CHECKED -> task.copy(isStarred = true)
-                    else -> task.copy(isStarred = false)
-                }
+            binding.toggleStar.setOnClickListener {
+                val updatedTask = task.copy(isStarred = binding.toggleStar.isChecked)
                 listener.onTaskUpdated(updatedTask)
             }
         }
