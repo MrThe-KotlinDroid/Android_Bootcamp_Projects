@@ -1,5 +1,6 @@
 package com.example.getitdone.ui.tasks
 
+import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -22,8 +23,12 @@ class TasksAdapter(private val listener: TaskUpdatedListener) : RecyclerView.Ada
         holder.bind(tasks[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setTasks(tasks: List<Task>) {
-        this.tasks = tasks
+
+        this.tasks = tasks.sortedBy { it: Task ->
+            it.isComplete
+        }
         notifyDataSetChanged()
     }
 
