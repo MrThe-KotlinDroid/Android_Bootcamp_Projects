@@ -19,14 +19,13 @@ import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
     private val database: GetItDoneDatabase by lazy { GetItDoneDatabase.getDatabase(this) }
     private val taskDao: TaskDao by lazy { database.getTaskDao() }
     private val tasksFragment: TasksFragment = TasksFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).apply {
+        ActivityMainBinding.inflate(layoutInflater).apply {
             pager.adapter = PagerAdapter(this@MainActivity)
 
             TabLayoutMediator(tabs, pager) { tab, _ ->
