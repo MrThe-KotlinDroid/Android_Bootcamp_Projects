@@ -64,8 +64,6 @@ class TasksAdapter(private val listener: TaskUpdatedListener) :
     }
 
     interface TaskUpdatedListener {
-
         fun onTaskUpdated(task: Task)
-
     }
 }
