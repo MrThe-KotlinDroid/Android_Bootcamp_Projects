@@ -35,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:textSize="14sp"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/text_view_title"
         app:layout_constraintStart_toStartOf="@id/text_view_title"
