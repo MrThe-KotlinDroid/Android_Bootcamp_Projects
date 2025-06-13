@@ -1,9 +1,12 @@
 package com.example.getitdone.ui
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -42,6 +45,13 @@ class MainActivity : AppCompatActivity() {
             val dialog = BottomSheetDialog(this@MainActivity)
             dialog.setContentView(root)
 
+            buttonSave.isEnabled = false
+
+            editTextTaskTitle.addTextChangedListener { input ->
+
+                buttonSave.isEnabled = isInputValid(input)
+            }
+
             buttonShowDetails.setOnClickListener {
                 editTextTaskDetails.visibility =
                     if (editTextTaskDetails.isVisible) View.GONE else View.VISIBLE
@@ -61,6 +71,10 @@ class MainActivity : AppCompatActivity() {
 
             dialog.show()
         }
+    }
+
+    private fun isInputValid(input: Editable?): Boolean {
+        return !input?.trim().isNullOrEmpty() && input!!.length > 1
     }
 
 
