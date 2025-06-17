@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                     if (editTextTaskDetails.isVisible) View.GONE else View.VISIBLE
             }
 
+
             buttonSave.setOnClickListener {
                 val task = Task(
                     title = editTextTaskTitle.text.toString(),
