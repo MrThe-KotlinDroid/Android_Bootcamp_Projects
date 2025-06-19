@@ -10,8 +10,21 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
+
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun subtraction_isCorrect() {
+        // Perform an action
+        val result = 7 - 2
+
+        // Assert the result
+        assertEquals(5, result)
+    }
+
+
 }
