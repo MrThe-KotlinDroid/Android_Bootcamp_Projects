@@ -26,5 +26,21 @@ class ExampleUnitTest {
         assertEquals(5, result)
     }
 
+    @Test
+    fun greeter_greetsPersonCorrectly() {
+        // Perform an action
+        val greeter = Greeter()
+        val result = greeter.greet("Abrar")
+
+        // Assert the result
+        assertEquals("Hello, Abrar!", result)
+    }
+}
+
+class Greeter() {
+
+    fun greet (name: String): String {
+        return "Hello, $name!"
+    }
 
 }
