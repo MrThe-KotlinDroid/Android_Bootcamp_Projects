@@ -1,8 +1,6 @@
 package com.example.getitdone.ui
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -16,6 +14,7 @@ import com.example.getitdone.data.TaskDao
 import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
 import com.example.getitdone.ui.tasks.TasksFragment
+import com.example.getitdone.util.InputValidator
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.concurrent.thread
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
             editTextTaskTitle.addTextChangedListener { input ->
 
-                buttonSave.isEnabled = isInputValid(input)
+                buttonSave.isEnabled = InputValidator.isInputValid(input?.toString())
             }
 
             buttonShowDetails.setOnClickListener {
@@ -71,10 +70,6 @@ class MainActivity : AppCompatActivity() {
 
             dialog.show()
         }
-    }
-
-    private fun isInputValid(input: Editable?): Boolean {
-        return !input?.trim().isNullOrEmpty() && input!!.length > 1
     }
 
 
