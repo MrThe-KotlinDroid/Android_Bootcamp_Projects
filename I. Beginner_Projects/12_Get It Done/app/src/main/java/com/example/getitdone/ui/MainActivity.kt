@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.getitdone.GetItDoneApplication.Companion.taskDao
 import com.example.getitdone.data.GetItDoneDatabase
 import com.example.getitdone.data.Task
 import com.example.getitdone.data.TaskDao
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
     private val database: GetItDoneDatabase by lazy { GetItDoneDatabase.getDatabase(this) }
-    private val taskDao: TaskDao by lazy { database.getTaskDao() }
     private val tasksFragment: TasksFragment = TasksFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
