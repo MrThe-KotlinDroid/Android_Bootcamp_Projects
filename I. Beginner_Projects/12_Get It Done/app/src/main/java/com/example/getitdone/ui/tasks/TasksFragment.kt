@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.getitdone.data.GetItDoneDatabase
 import com.example.getitdone.data.Task
 import com.example.getitdone.data.TaskDao
@@ -13,6 +14,7 @@ import kotlin.concurrent.thread
 
 class TasksFragment: Fragment(), TasksAdapter.TaskItemClickListener {
 
+    private val viewModel: TasksViewModel by viewModels()
     private lateinit var binding: FragmentTasksBinding
     private val taskDao: TaskDao by lazy {
         GetItDoneDatabase.getDatabase(requireContext()).getTaskDao()

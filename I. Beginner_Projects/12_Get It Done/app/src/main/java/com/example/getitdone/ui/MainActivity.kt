@@ -2,6 +2,7 @@ package com.example.getitdone.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
@@ -21,6 +22,8 @@ import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel: MainViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
     private val database: GetItDoneDatabase by lazy { GetItDoneDatabase.getDatabase(this) }
     private val taskDao: TaskDao by lazy { database.getTaskDao() }
     private val tasksFragment: TasksFragment = TasksFragment()
