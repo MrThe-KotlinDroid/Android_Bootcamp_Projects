@@ -9,28 +9,22 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.getitdone.GetItDoneApplication.Companion.taskDao
-import com.example.getitdone.data.GetItDoneDatabase
-import com.example.getitdone.data.Task
-import com.example.getitdone.data.TaskDao
 import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
 import com.example.getitdone.ui.tasks.TasksFragment
 import com.example.getitdone.util.InputValidator
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private val database: GetItDoneDatabase by lazy { GetItDoneDatabase.getDatabase(this) }
     private val tasksFragment: TasksFragment = TasksFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ActivityMainBinding.inflate(layoutInflater).apply {
+        binding = ActivityMainBinding.inflate(layoutInflater).apply {
             pager.adapter = PagerAdapter(this@MainActivity)
 
             TabLayoutMediator(tabs, pager) { tab, _ ->
@@ -60,13 +54,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             buttonSave.setOnClickListener {
-                val task = Task(
-                    title = editTextTaskTitle.text.toString(),
-                    description = editTextTaskDetails.text.toString()
+                viewModel.createTask(
+                    editTextTaskTitle.text.toString(),
+                    editTextTaskDetails.text.toString()
                 )
-                thread {
-                    taskDao.createTask(task)
-                }
                 dialog.dismiss()
                 tasksFragment.fetchAllTasks()
             }
