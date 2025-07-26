@@ -11,7 +11,7 @@ import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.FragmentTasksBinding
 import kotlin.concurrent.thread
 
-class TasksFragment: Fragment(), TasksAdapter.TaskItemClickListener {
+class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
 
     private val viewModel: TasksViewModel by viewModels()
     private lateinit var binding: FragmentTasksBinding
