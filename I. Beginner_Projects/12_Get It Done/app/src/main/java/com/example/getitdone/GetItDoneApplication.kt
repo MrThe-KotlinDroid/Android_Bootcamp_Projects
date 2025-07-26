@@ -10,7 +10,6 @@ class GetItDoneApplication : Application() {
         super.onCreate()
         database = GetItDoneDatabase.getDatabase(this)
         taskDao = database.getTaskDao()
-
     }
 
     companion object {

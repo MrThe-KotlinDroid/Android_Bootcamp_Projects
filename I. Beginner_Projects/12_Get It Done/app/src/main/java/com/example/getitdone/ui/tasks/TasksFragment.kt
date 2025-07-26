@@ -16,6 +16,7 @@ class TasksFragment: Fragment(), TasksAdapter.TaskItemClickListener {
     private val viewModel: TasksViewModel by viewModels()
     private lateinit var binding: FragmentTasksBinding
 
+
     private val adapter = TasksAdapter(this)
 
     override fun onCreateView(
