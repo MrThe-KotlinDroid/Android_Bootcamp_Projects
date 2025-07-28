@@ -35,25 +35,25 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
     }
 
     fun fetchAllTasks() {
-        thread {
-            val tasks = taskDao.getAllTasks()
+        viewModel.fetchTasks { tasks ->
             requireActivity().runOnUiThread {
                 adapter.setTasks(tasks)
             }
         }
+
+//        thread {
+//            val tasks = taskDao.getAllTasks()
+//            requireActivity().runOnUiThread {
+//                adapter.setTasks(tasks)
+//            }
+//        }
     }
 
     override fun onTaskUpdated(task: Task) {
-        thread {
-            taskDao.updateTask(task)
-            fetchAllTasks()
-        }
+        viewModel.updateTask(task)
     }
 
     override fun onTaskDeleted(task: Task) {
-        thread {
-            taskDao.deleteTask(task)
-            fetchAllTasks()
-        }
+        viewModel.deleteTask(task)
     }
 }

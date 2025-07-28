@@ -3,21 +3,29 @@ package com.example.getitdone.ui.tasks
 import androidx.lifecycle.ViewModel
 import com.example.getitdone.GetItDoneApplication
 import com.example.getitdone.data.Task
+import kotlin.concurrent.thread
 
 class TasksViewModel : ViewModel() {
 
-    val taskDao = GetItDoneApplication.taskDao
+    private val taskDao = GetItDoneApplication.taskDao
 
-    fun fetchTasks() {
-
+    fun fetchTasks(callback: (List<Task>) -> Unit) {
+        thread {
+            val tasks = taskDao.getAllTasks()
+            callback(tasks)
+        }
     }
 
     fun updateTask(task: Task) {
-
+        thread {
+            taskDao.updateTask(task)
+        }
     }
 
     fun deleteTask(task: Task) {
-
+        thread {
+            taskDao.deleteTask(task)
+        }
     }
 
 }
