@@ -2,6 +2,7 @@ package com.example.getitdone.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -15,6 +16,10 @@ import com.example.getitdone.ui.tasks.TasksFragment
 import com.example.getitdone.util.InputValidator
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +39,12 @@ class MainActivity : AppCompatActivity() {
             fab.setOnClickListener { showAddTaskDialogue() }
             setContentView(root)
         }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(3000)
+            Toast.makeText(this@MainActivity, "Hello from our very first coroutines!", Toast.LENGTH_LONG).show()
+        }
+
     }
 
     private fun showAddTaskDialogue() {
