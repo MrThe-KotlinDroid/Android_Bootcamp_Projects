@@ -41,6 +41,7 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
             }
         }
 
+
 //        thread {
 //            val tasks = taskDao.getAllTasks()
 //            requireActivity().runOnUiThread {
