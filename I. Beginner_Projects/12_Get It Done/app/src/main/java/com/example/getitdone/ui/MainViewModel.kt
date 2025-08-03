@@ -1,12 +1,12 @@
 package com.example.getitdone.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.getitdone.GetItDoneApplication
 import com.example.getitdone.data.Task
-import kotlin.concurrent.thread
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
-
     private val taskDao = GetItDoneApplication.taskDao
 
     fun createTask(title: String, description: String?) {
@@ -14,10 +14,8 @@ class MainViewModel : ViewModel() {
             title = title,
             description = description
         )
-        thread {
+        viewModelScope.launch {
             taskDao.createTask(task)
         }
-        // save the task here
     }
-
 }

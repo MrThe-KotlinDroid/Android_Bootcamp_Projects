@@ -41,10 +41,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         CoroutineScope(Dispatchers.Main).launch {
-            delay(3000)
-            Toast.makeText(this@MainActivity, "Hello from our very first coroutines!", Toast.LENGTH_LONG).show()
-        }
 
+        }
     }
 
     private fun showAddTaskDialogue() {

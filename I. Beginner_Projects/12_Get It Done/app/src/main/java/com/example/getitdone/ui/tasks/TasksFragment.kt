@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.getitdone.GetItDoneApplication.Companion.taskDao
 import com.example.getitdone.data.Task
 import com.example.getitdone.databinding.FragmentTasksBinding
-import kotlin.concurrent.thread
 
 class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
 
@@ -36,25 +34,17 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
 
     fun fetchAllTasks() {
         viewModel.fetchTasks { tasks ->
-            requireActivity().runOnUiThread {
                 adapter.setTasks(tasks)
-            }
         }
-
-
-//        thread {
-//            val tasks = taskDao.getAllTasks()
-//            requireActivity().runOnUiThread {
-//                adapter.setTasks(tasks)
-//            }
-//        }
     }
 
     override fun onTaskUpdated(task: Task) {
         viewModel.updateTask(task)
+        fetchAllTasks()
     }
 
     override fun onTaskDeleted(task: Task) {
         viewModel.deleteTask(task)
+        fetchAllTasks()
     }
 }
