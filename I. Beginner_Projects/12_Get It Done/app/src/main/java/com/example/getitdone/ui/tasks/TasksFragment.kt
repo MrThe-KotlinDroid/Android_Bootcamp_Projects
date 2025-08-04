@@ -43,6 +43,7 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
         fetchAllTasks()
     }
 
+
     override fun onTaskDeleted(task: Task) {
         viewModel.deleteTask(task)
         fetchAllTasks()
