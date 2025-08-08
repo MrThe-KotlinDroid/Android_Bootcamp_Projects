@@ -17,6 +17,7 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
 
     private val adapter = TasksAdapter(this)
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
