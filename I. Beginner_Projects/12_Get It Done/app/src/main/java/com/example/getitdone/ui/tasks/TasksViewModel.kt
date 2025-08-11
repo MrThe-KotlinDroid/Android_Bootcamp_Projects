@@ -10,11 +10,9 @@ class TasksViewModel : ViewModel() {
 
     private val taskDao = GetItDoneApplication.taskDao
 
-    fun fetchTasks(callback: (List<Task>) -> Unit) {
-        viewModelScope.launch {
-            val tasks = taskDao.getAllTasks()
-            callback(tasks)
-        }
+    suspend fun fetchTasks(): List<Task> {
+        val tasks = taskDao.getAllTasks()
+        return tasks
     }
 
     fun updateTask(task: Task) {
