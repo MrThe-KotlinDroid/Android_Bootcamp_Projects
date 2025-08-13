@@ -11,8 +11,7 @@ class TasksViewModel : ViewModel() {
     private val taskDao = GetItDoneApplication.taskDao
 
     suspend fun fetchTasks(): List<Task> {
-        val tasks = taskDao.getAllTasks()
-        return tasks
+        return taskDao.getAllTasks()
     }
 
     fun updateTask(task: Task) {
