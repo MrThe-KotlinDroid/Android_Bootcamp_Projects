@@ -1,8 +1,8 @@
 package com.example.getitdone
 
 import android.app.Application
-import com.example.getitdone.data.GetItDoneDatabase
-import com.example.getitdone.data.TaskDao
+import com.example.getitdone.data.database.GetItDoneDatabase
+import com.example.getitdone.data.database.TaskDao
 
 class GetItDoneApplication : Application() {
 
