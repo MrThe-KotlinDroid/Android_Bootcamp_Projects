@@ -5,13 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.getitdone.GetItDoneApplication
 import com.example.getitdone.data.TaskRepository
 import com.example.getitdone.data.model.Task
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class TasksViewModel : ViewModel() {
 
     private val repository: TaskRepository = GetItDoneApplication.taskRepository
 
-    suspend fun fetchTasks(): List<Task> {
+    fun fetchTasks(): Flow<List<Task>> {
         return repository.getTasks()
     }
 

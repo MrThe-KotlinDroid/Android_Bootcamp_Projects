@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private val tasksFragment: TasksFragment = TasksFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +65,6 @@ class MainActivity : AppCompatActivity() {
                     editTextTaskDetails.text.toString()
                 )
                 dialog.dismiss()
-                tasksFragment.fetchAllTasks()
             }
 
             dialog.show()
@@ -77,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount() = 1
 
         override fun createFragment(position: Int): Fragment {
-            return tasksFragment
+            return TasksFragment()
         }
     }
 }

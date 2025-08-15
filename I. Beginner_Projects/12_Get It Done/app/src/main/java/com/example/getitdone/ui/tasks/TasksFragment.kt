@@ -33,21 +33,19 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
         fetchAllTasks()
     }
 
-    fun fetchAllTasks() {
+    private fun fetchAllTasks() {
         lifecycleScope.launch {
-            val tasks = viewModel.fetchTasks()
-
-            adapter.setTasks(tasks)
+            viewModel.fetchTasks().collect { tasks ->
+                adapter.setTasks(tasks)
+            }
         }
     }
 
     override fun onTaskUpdated(task: Task) {
         viewModel.updateTask(task)
-        fetchAllTasks()
     }
 
     override fun onTaskDeleted(task: Task) {
         viewModel.deleteTask(task)
-        fetchAllTasks()
     }
 }
