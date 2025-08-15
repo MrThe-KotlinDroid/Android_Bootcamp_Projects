@@ -34,9 +34,9 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
     }
 
     fun fetchAllTasks() {
-
         lifecycleScope.launch {
             val tasks = viewModel.fetchTasks()
+
             adapter.setTasks(tasks)
         }
     }
