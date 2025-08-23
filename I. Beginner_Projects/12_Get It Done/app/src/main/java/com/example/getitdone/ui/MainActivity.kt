@@ -14,6 +14,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.getitdone.R
 import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
+import com.example.getitdone.ui.tasks.StarredTasksFragment
 import com.example.getitdone.ui.tasks.TasksFragment
 import com.example.getitdone.util.InputValidator
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
             pager.adapter = PagerAdapter(this@MainActivity)
-
+            pager.currentItem = 1
             TabLayoutMediator(tabs, pager) { tab, position ->
                 when (position) {
                     0 -> tab.icon = ContextCompat.getDrawable(this@MainActivity, R.drawable.icon_star_filled)
@@ -77,7 +78,10 @@ class MainActivity : AppCompatActivity() {
         override fun getItemCount() = 3
 
         override fun createFragment(position: Int): Fragment {
-            return TasksFragment()
+            return when (position) {
+                0 -> StarredTasksFragment()
+                else -> TasksFragment()
+            }
         }
     }
 }
