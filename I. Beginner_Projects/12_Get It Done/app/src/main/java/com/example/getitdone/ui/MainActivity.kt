@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun showAddTaskDialogue() {
         DialogAddTaskBinding.inflate(layoutInflater).apply {
             val dialog = BottomSheetDialog(this@MainActivity)
