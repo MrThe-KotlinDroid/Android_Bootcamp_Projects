@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     inner class PagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
         override fun getItemCount() = 3
 
