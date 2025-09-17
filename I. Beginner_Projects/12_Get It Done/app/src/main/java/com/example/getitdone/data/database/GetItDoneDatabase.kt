@@ -24,7 +24,7 @@ abstract class GetItDoneDatabase : RoomDatabase() {
         private val MIGRATION_2_TO_3 =  object : Migration (2, 3) {
 
             override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("""CREATE TABLE IF NOT EXISTS 'task_list' 
+                db.execSQL("""CREATE TABLE IF NOT EXISTS 'task_list'
                                    (
                                       'task_list_id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                       'name' TEXT NOT NULL
@@ -43,9 +43,17 @@ abstract class GetItDoneDatabase : RoomDatabase() {
                 )
                     .addMigrations(MIGRATION_2_TO_3)
                     .addCallback(object : Callback() {
+
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
+                            // Insert default task list
                             db.execSQL("INSERT INTO task_list (name) VALUES ('Tasks')")
+                        }
+
+                        override fun onOpen(db: SupportSQLiteDatabase) {
+                            super.onOpen(db)
+                            // Ensure default task list exists even if onCreate wasn't called
+                            db.execSQL("INSERT OR IGNORE INTO task_list (task_list_id, name) VALUES (1, 'Tasks')")
                         }
                     })
                     .build()
