@@ -5,11 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.getitdone.data.model.Task
+import com.example.getitdone.data.model.TaskList
 
-@Database(entities = [Task::class], version = 2)
+@Database(entities = [Task::class, TaskList::class], version = 3)
 abstract class GetItDoneDatabase : RoomDatabase() {
 
     abstract fun getTaskDao(): TaskDao
+
+    abstract fun getTaskListDao(): TaskListDao
 
     companion object {
 
@@ -24,7 +27,6 @@ abstract class GetItDoneDatabase : RoomDatabase() {
                     GetItDoneDatabase::class.java,
                     "get-it-done-database"
                 )
-                    .fallbackToDestructiveMigration()
                     .build()
                 DATABASE_INSTANCE = instance
                 instance
