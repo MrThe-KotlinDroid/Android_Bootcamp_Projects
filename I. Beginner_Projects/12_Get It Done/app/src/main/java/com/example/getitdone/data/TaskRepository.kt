@@ -29,6 +29,6 @@ class TaskRepository(private val taskDao: TaskDao, private val taskListDao: Task
     }
 
     fun getTaskLists(): Flow<List<TaskList>> {
-        return taskListDao.getAllTasks()
+        return taskListDao.getAllLists()
     }
 }
