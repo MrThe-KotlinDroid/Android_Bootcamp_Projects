@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.getitdone.data.model.Task
 import com.example.getitdone.data.model.TaskList
 
-@Database(entities = [Task::class, TaskList::class], version = 3)
+@Database(entities = [Task::class, TaskList::class], version = 4)
 abstract class GetItDoneDatabase : RoomDatabase() {
 
     abstract fun getTaskDao(): TaskDao
@@ -42,6 +42,7 @@ abstract class GetItDoneDatabase : RoomDatabase() {
                     "get-it-done-database"
                 )
                     .addMigrations(MIGRATION_2_TO_3)
+                    .fallbackToDestructiveMigration(dropAllTables = true)
                     .addCallback(object : Callback() {
 
                         override fun onCreate(db: SupportSQLiteDatabase) {
