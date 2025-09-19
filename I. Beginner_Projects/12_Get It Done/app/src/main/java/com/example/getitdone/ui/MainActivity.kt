@@ -2,9 +2,12 @@ package com.example.getitdone.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
 
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
 
@@ -44,13 +48,18 @@ class MainActivity : AppCompatActivity() {
                     pager.currentItem = 1
                     TabLayoutMediator(tabs, pager) { tab, position ->
                         when (position) {
-                            0 -> tab.icon = ContextCompat.getDrawable(this@MainActivity, R.drawable.icon_star_filled)
+                            0 -> tab.icon = ContextCompat.getDrawable(
+                                this@MainActivity,
+                                R.drawable.icon_star_filled
+                            )
+
                             tasksLists.size + 1 -> {
 
                                 val buttonBinding = TabButtonBinding.inflate(layoutInflater)
 
                                 tab.customView = buttonBinding.root
                             }
+
                             else -> tab.text = tasksLists[position - 1].name
                         }
                     }.attach()
@@ -59,6 +68,23 @@ class MainActivity : AppCompatActivity() {
 
             fab.setOnClickListener { showAddTaskDialogue() }
             setContentView(root)
+
+            ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
+                val systemBarsInsets = insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() or
+                            WindowInsetsCompat.Type.displayCutout()
+                )
+
+                // Apply top padding only to the AppBarLayout to avoid status bar overlay
+                root.setPadding(
+                    systemBarsInsets.left,
+                    systemBarsInsets.top,
+                    systemBarsInsets.right,
+                    systemBarsInsets.bottom
+                )
+
+                insets
+            }
         }
     }
 
@@ -94,7 +120,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    inner class PagerAdapter(activity: FragmentActivity, private val numberOfPages: Int) : FragmentStateAdapter(activity) {
+    inner class PagerAdapter(activity: FragmentActivity, private val numberOfPages: Int) :
+        FragmentStateAdapter(activity) {
 
         override fun getItemCount() = numberOfPages
 
