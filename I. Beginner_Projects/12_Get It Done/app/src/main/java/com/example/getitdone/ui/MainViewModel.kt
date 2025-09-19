@@ -14,10 +14,11 @@ class MainViewModel : ViewModel() {
     private val repository: TaskRepository = GetItDoneApplication.taskRepository
 
     fun getTaskList(): Flow<List<TaskList>> = repository.getTaskLists()
-    fun createTask(title: String, description: String?) {
+    fun createTask(title: String, description: String?, listId: Int) {
         val task = Task(
             title = title,
-            description = description
+            description = description,
+            listId = listId
         )
         viewModelScope.launch {
             repository.createTask(task)
