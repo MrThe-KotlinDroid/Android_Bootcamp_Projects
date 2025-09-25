@@ -50,12 +50,6 @@ abstract class GetItDoneDatabase : RoomDatabase() {
                             // Insert default task list
                             db.execSQL("INSERT INTO task_list (name) VALUES ('Tasks')")
                         }
-
-                        override fun onOpen(db: SupportSQLiteDatabase) {
-                            super.onOpen(db)
-                            // Ensure default task list exists even if onCreate wasn't called
-                            db.execSQL("INSERT OR IGNORE INTO task_list (task_list_id, name) VALUES (1, 'Tasks')")
-                        }
                     })
                     .build()
                 DATABASE_INSTANCE = instance

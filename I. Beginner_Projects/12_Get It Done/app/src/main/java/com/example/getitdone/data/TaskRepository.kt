@@ -12,8 +12,8 @@ class TaskRepository(private val taskDao: TaskDao, private val taskListDao: Task
         taskDao.createTask(task)
     }
 
-    fun getTasks(): Flow<List<Task>> {
-        return taskDao.getAllTasks()
+    fun getTasks(taskListId: Int): Flow<List<Task>> {
+        return taskDao.getAllTasks(taskListId)
     }
 
     fun getStarredTasks(): Flow<List<Task>> {
@@ -30,5 +30,10 @@ class TaskRepository(private val taskDao: TaskDao, private val taskListDao: Task
 
     fun getTaskLists(): Flow<List<TaskList>> {
         return taskListDao.getAllLists()
+    }
+
+    suspend fun createTaskList(listName: String) {
+        val taskList = TaskList(name = listName)
+        taskListDao.createTaskList(taskList)
     }
 }

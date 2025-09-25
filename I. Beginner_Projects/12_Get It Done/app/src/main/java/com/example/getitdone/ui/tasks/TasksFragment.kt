@@ -11,7 +11,7 @@ import com.example.getitdone.data.model.Task
 import com.example.getitdone.databinding.FragmentTasksBinding
 import kotlinx.coroutines.launch
 
-class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
+class TasksFragment(private val taskListId: Int) : Fragment(), TasksAdapter.TaskItemClickListener {
 
     private val viewModel: TasksViewModel by viewModels()
     private lateinit var binding: FragmentTasksBinding
@@ -35,7 +35,7 @@ class TasksFragment : Fragment(), TasksAdapter.TaskItemClickListener {
 
     private fun fetchAllTasks() {
         lifecycleScope.launch {
-            viewModel.fetchTasks().collect { tasks ->
+            viewModel.fetchTasks(taskListId).collect { tasks ->
                 adapter.setTasks(tasks)
             }
         }

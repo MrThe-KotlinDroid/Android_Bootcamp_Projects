@@ -18,11 +18,13 @@ import com.example.getitdone.R
 import com.example.getitdone.data.model.TaskList
 import com.example.getitdone.databinding.ActivityMainBinding
 import com.example.getitdone.databinding.DialogAddTaskBinding
+import com.example.getitdone.databinding.DialogAddTaskListBinding
 import com.example.getitdone.databinding.TabButtonBinding
 import com.example.getitdone.ui.tasks.StarredTasksFragment
 import com.example.getitdone.ui.tasks.TasksFragment
 import com.example.getitdone.util.InputValidator
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -40,10 +42,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).apply {
 
             lifecycleScope.launch {
-                viewModel.getTaskList().collectLatest { tasksLists ->
+                viewModel.getTaskLists().collectLatest { tasksLists ->
                     currentTaskList = tasksLists
 
-                    pager.adapter = PagerAdapter(this@MainActivity, tasksLists.size + 2)
+                    pager.adapter = PagerAdapter(this@MainActivity, tasksLists)
 
                     pager.currentItem = 1
                     TabLayoutMediator(tabs, pager) { tab, position ->
@@ -57,7 +59,9 @@ class MainActivity : AppCompatActivity() {
 
                                 val buttonBinding = TabButtonBinding.inflate(layoutInflater)
 
-                                tab.customView = buttonBinding.root
+                                tab.customView = buttonBinding.root.apply{
+                                    setOnClickListener { showAddTaskListDialog() }
+                                }
                             }
 
                             else -> tab.text = tasksLists[position - 1].name
@@ -86,6 +90,21 @@ class MainActivity : AppCompatActivity() {
                 insets
             }
         }
+    }
+
+    private fun showAddTaskListDialog() {
+        val dialogBinding = DialogAddTaskListBinding.inflate(layoutInflater)
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.add_new_list_dialog_title))
+            .setView(dialogBinding.root)
+            .setPositiveButton(getString(R.string.create_button_text)) { dialog, _ ->
+                viewModel.addNewTaskList(dialogBinding.editTextListName.text?.toString())
+                dialog.dismiss()
+            }
+            .setNegativeButton(getString(R.string.cancel_button_text)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun showAddTaskDialogue() {
@@ -120,15 +139,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    inner class PagerAdapter(activity: FragmentActivity, private val numberOfPages: Int) :
+    inner class PagerAdapter(activity: FragmentActivity, private val taskLists: List<TaskList>) :
         FragmentStateAdapter(activity) {
 
-        override fun getItemCount() = numberOfPages
+        override fun getItemCount() = taskLists.size + 2
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> StarredTasksFragment()
-                else -> TasksFragment()
+                taskLists.size + 1 -> Fragment()
+                else -> TasksFragment(taskLists[position - 1].id)
             }
         }
     }
